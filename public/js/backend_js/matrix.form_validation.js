@@ -1,5 +1,27 @@
 
 $(document).ready(function(){
+
+	$("#new_pwd").click(function(){
+		var current_pwd = $("#current_pwd").val();
+		$.ajax({
+			type: 'get',
+			url: '/admin/check-pwd', // passing the password to this url
+			data:{
+				current_pwd:current_pwd
+			},
+			success:function(resp){  // the response that comes after checking from the provided url
+				alert(resp)
+					// if(resp=="false"){
+					// 	$("#chkPwd").html("<font color='red'>Current Password is Incorrect</font>");
+					// }else if(resp=="true"){
+					// 	$("#chkPwd").html("<font color='green'>Current Password is Correct</font>");
+					// }
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	})
 	
 	$('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 	
