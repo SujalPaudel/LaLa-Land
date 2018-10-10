@@ -13,7 +13,7 @@ class AdminController extends Controller
       if($request->isMethod('post')){
         $data = $request->input();
         if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password'], 'admin'=>'1'])){ // to check the credentials of admin
-          Session::put('adminSession', $data['email']);
+          // Session::put('adminSession', $data['email']);
           return redirect('/admin/dashboard');
 
         }else{
@@ -24,11 +24,12 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-      if(Session::has('adminSession')){
-      return view('admin.dashboard');
-    }else{
-      return redirect('/admin')->with('flash_message_error', "Please login to Enter");
-    }
+    //   if(Session::has('adminSession')){
+ 
+    // }else{
+    //   return redirect('/admin')->with('flash_message_error', "Please login to Enter");
+    // }
+    return view('admin.dashboard');
   }
 
     public function logout(){
