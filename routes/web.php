@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function(){
   Route::match(['get', 'post'], '/admin/update-pwd', 'AdminController@updatePassword');
 
   Route::match(['get', 'post'], '/admin/add-category', 'CategoryController@addCategory'); // both the get and the post method 
+  Route::match(['get', 'post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
   Route::get('/admin/view-categories', 'CategoryController@viewCategories');
 });
 

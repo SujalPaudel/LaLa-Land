@@ -22,6 +22,12 @@ class CategoryController extends Controller
       return view('admin.categories.add_category');
     }
 
+    public function editCategory(Request $request, $id = null){
+      $categoryDetails = Category::where(['id'=>$id])->first();
+      return view('admin.categories.edit_category')->with(compact('categoryDetails'));
+    }
+
+
     public function viewCategories(){
       $categories = Category::get();
       $categories = json_decode(json_encode($categories));
