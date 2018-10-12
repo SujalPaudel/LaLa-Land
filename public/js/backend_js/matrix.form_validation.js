@@ -160,4 +160,11 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	$("#delCat").click(function(){
+		if(confirm("Are you sure you want to delete this Category?")){
+			return true;
+		}
+		return false;
+	})
 });

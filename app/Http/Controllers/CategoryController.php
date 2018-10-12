@@ -22,6 +22,13 @@ class CategoryController extends Controller
       return view('admin.categories.add_category');
     }
 
+    public function deleteCategory($id = null){
+      if(!empty($id)){
+        Category::where(['id'=>$id])->delete();
+        return redirect()->back()->with("flash_message_success", 'Category deleted Successfully!');
+      }
+    }
+
     public function editCategory(Request $request, $id = null){
       if($request->isMethod('post')){
         $data = $request->all();
