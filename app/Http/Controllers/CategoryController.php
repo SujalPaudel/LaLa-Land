@@ -16,7 +16,16 @@ class CategoryController extends Controller
         $category->description = $data['description'];
         $category->url = $data['url'];
         $category->save();
+        return redirect('/admin/view-categories')->with('flash_message_success', 'Category Added Successfully');
+
       }
       return view('admin.categories.add_category');
+    }
+
+    public function viewCategories(){
+      $categories = Category::get();
+      $categories = json_decode(json_encode($categories));
+      // echo "<pre>"; print_r($categories);die;
+      return view('admin.categories.view_categories')->with(compact('categories'));
     }
 }
