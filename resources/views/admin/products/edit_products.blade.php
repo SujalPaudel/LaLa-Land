@@ -72,13 +72,18 @@
                 </div>
               </div>
 
-              <div class = "control-group">
-                <label class = "control-label">Image</label>
-                <div class = "controls">
-                  <input type = "file" name = "image" id = "image" value = "{{$productDetails->image}}"> 
-                </div>             
-              </div>
-
+          
+                <div class = "control-group">
+                  <label class = "control-label">Image</label>
+                  <div class = "controls">
+                    <input type = "file" name = "image" id = "image">
+                    <input type = "hidden" name = "current_image" value = "{{ $productDetails->image}}">
+                  @if(!empty($productDetails->image)) 
+                    <img src = "{{asset('/images/backend_images/products/small_images/'.$productDetails->image) }}" style = "width:65px;"> | <a href = "{{url('/admin/delete-product-image/'.$productDetails->id)}}">Delete</a>
+                  @endif
+                  </div>             
+                </div>
+             
               <div class="form-actions">
                 <input type="submit" value="Edit" class="btn btn-success">
               </div>

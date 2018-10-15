@@ -80,7 +80,7 @@
               </div>
 
               <div class="form-actions">
-                <input type="submit" value="Validate" class="btn btn-success">
+                <input type="submit" value="Add" class="btn btn-success">
               </div>
             </form>
           </div>
