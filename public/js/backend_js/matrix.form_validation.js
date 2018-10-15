@@ -244,5 +244,36 @@ $(document).ready(function(){
 			return true;
 		}
 		return false;
-	})
+	});
+
+	// $("#delProduct").click(function(){
+	// 	if(confirm("Are you sure you want to delete this Product?")){
+	// 		return true;
+	// 	}
+	// 	return false;
+	// })
+
+	$(".deleteRecord").click(function(){
+		var id = $(this).attr('rel');
+		var deleteFunction = $(this).attr('rel1');
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to revert this!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+ 			confirmButtonText: 'Yes, delete it!',
+  		cancelButtonText: 'No, cancel!',
+			cancelButtonColor: '#d33',
+			confirmButtonClass: "btn btn-success",
+			cancelButtonClass: "btn btn-danger",
+			buttonsStyling: false,
+			reverseButtons:true
+		},
+		function(){
+			window.location.href = "/admin/"+deleteFunction+"/"+id;
+		});
+	});
 });
+
+
