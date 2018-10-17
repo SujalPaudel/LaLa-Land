@@ -149,18 +149,16 @@ class ProductsController extends Controller
       return redirect()->back()->with('flash_message_success', 'Product has been removed successfully!!');
     }
 
-
-
-
     public function deleteProductImage($id = null){
       Products::where(['id'=>$id])->update(['image'=>'']);
       return redirect()->back()->with('flash_message_success', 'The product image has been successfully deleted');
     }
 
     public function addAttributes(Request $request, $id = null){
-      $productDetails = Products::where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
+      $productDetails = Products::with('attributes')->where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
       if($request->isMethod('post')){
         $data = $request->all();
+
 
         foreach($data['sku'] as $key => $val){ // val represents value of key
           if(!empty($val)){
