@@ -71,7 +71,7 @@ class ProductsController extends Controller
       foreach($products as $key => $val){{
 
         $category_name =  Category::where(['id'=>$val->category_id])->first();
-        $products[$key]->category_name = $category_name->name;
+        $products[$key]->category_name = $category_name['name'];
       }}
       // echo "<pre>";print_r($products);die;  
       return view('admin.products.view_products')->with(compact('products'));
@@ -157,6 +157,12 @@ class ProductsController extends Controller
     }
 
     public function addAttributes(Request $request, $id = null){
-      return view('admin.products.add_attributes');
+      $productDetails = Products::where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
+      if($request->isMethod('post')){
+        $data = $request->all();
+        echo "<pre>"; print_r($data);die;
+      }
+
+     return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
 }
