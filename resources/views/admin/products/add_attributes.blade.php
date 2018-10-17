@@ -30,6 +30,7 @@
           </div>
           <div class="widget-content nopadding">
             <form enctype = "multipart/form-data" class="form-horizontal" method="post" action="{{url('/admin/add-attributes/'.$productDetails->id)}}" name="add_product" id="add_product" novalidate="novalidate"> {{ csrf_field() }}
+              <input type = "hidden" name = 'product_id' value = "{{$productDetails->id}}">
               <div class = "control-group">
                 <label class="control-label">Product Name</label>
                 <label class="control-label"><strong>{{$productDetails->product_name}}</strong></label>

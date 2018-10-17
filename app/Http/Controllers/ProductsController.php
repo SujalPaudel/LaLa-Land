@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use App\Category;
 use App\Products;
+use App\ProductAttribute;
 use Image;
  
 
@@ -160,9 +161,22 @@ class ProductsController extends Controller
       $productDetails = Products::where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
       if($request->isMethod('post')){
         $data = $request->all();
-        echo "<pre>"; print_r($data);die;
-      }
 
+        foreach($data['sku'] as $key => $val){ // val represents value of key
+          if(!empty($val)){
+            $attribute = new ProductAttribute;
+            $attribute->product_id = $id;
+            $attribute->sku = $val;
+            $attribute->size = $data['size'][$key];
+            $attribute->price = $data['price'][$key];
+            $attribute->stock = $data['stock'][$key];
+            $attribute->save();
+
+          }
+
+        }
+        return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'Product attributes are successfully added');
+      }
      return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
 }
