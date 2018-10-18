@@ -177,4 +177,12 @@ class ProductsController extends Controller
       }
      return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
+
+    public function deleteAttribute($id = null){
+      ProductAttribute::where(['id'=>$id])->delete();
+      return redirect()->back()->with('flash_message_success', 'Product Attribute has been removed successfully!!');
+    }
+
+
+
 }
