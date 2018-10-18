@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
@@ -48,6 +46,7 @@ Route::group(['middleware' => ['auth']], function(){
 
   Route::match(['get', 'post'], '/admin/add-attributes/{id}', 'ProductsController@addAttributes');
   Route::get('/admin/delete-attribute/{id}', 'ProductsController@deleteAttribute');
+
 
 });
 
