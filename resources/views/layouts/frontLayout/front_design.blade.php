@@ -30,15 +30,12 @@
   @yield('content');
 
   @include('layouts.frontLayout.front_footer');
-
   
-
-  
-    <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.scrollUp.min.js"></script>
-  <script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/frontend_js/jquery.js"></script>
+  <script src="js/frontend_js/bootstrap.min.js"></script>
+  <script src="js/frontend_js/jquery.scrollUp.min.js"></script>
+  <script src="js/frontend_js/price-range.js"></script>
+  <script src="js/frontend_js/jquery.prettyPhoto.js"></script>
+  <script src="js/frontend_js/main.js"></script>
 </body>
 </html>
