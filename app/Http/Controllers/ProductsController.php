@@ -183,6 +183,12 @@ class ProductsController extends Controller
       return redirect()->back()->with('flash_message_success', 'Product Attribute has been removed successfully!!');
     }
 
-
-
+    public function products($url = null){
+      
+      $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
+      $categoryDetails = Category::where(['url'=>$url])->first();     
+      $productsAll = Products::where(['category_id' => $categoryDetails->id])->get();
+      return view('products.listing')->with(compact('categories','categoryDetails','productsAll'));
+  
+  }
 }
