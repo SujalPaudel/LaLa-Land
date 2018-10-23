@@ -185,6 +185,10 @@ class ProductsController extends Controller
 
     public function products($url = null){
       
+      $countCategory = Category::where(['url'=>$url])->count();
+      if($countCategory == 0){
+        abort(404);
+      }
       $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
       $categoryDetails = Category::where(['url'=>$url])->first();  
 
