@@ -24,8 +24,10 @@ Route::get('/admin/dashboard', 'AdminController@dashboard');
 Route::get('/logout', 'AdminController@logout');
 
 // Category/Listing page
+Route::get('/category/{url}', 'ProductsController@products');
 
-Route::get('/{url}', 'ProductsController@products');
+// Product Detail page
+Route::get('/product/{id}', 'ProductsController@product');
 
 Route::group(['middleware' => ['auth']], function(){
   Route::get('/admin/dashboard', 'AdminController@dashboard');

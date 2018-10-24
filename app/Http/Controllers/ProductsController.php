@@ -233,4 +233,11 @@ class ProductsController extends Controller
       return view('products.listing')->with(compact('categories','categoryDetails','productsAll'));
   
   }
+
+  public function product($id = null){
+    $productDetails = Products::where(['id'=>$id])->first();
+    // echo "<pre>";print_r($productDetails);die;
+    $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
+    return view('products.detail')->with(compact('productDetails', 'categories'));
+  }
 }
