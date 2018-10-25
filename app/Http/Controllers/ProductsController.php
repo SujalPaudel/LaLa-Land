@@ -27,6 +27,13 @@ class ProductsController extends Controller
         $product->product_code = $data['product_code'];
         $product->product_color = $data['product_color'];
         $product->description = $data['description'];
+
+        if(!empty($data['acc_care'])){
+          $product->accessories_care = $data['acc_care'];
+        }else{
+          $product->accessories_care = '';
+        }
+
         $product->price = $data['price'];
         
         // upload image
@@ -67,7 +74,7 @@ class ProductsController extends Controller
     }
 
     public function viewProducts(Request $request){
-      $products = Products::get();
+      $products = Products::orderBy('id', 'DESC')->get();
       $products = json_decode(json_encode($products));
       foreach($products as $key => $val){{
 
@@ -244,7 +251,7 @@ class ProductsController extends Controller
 
   public function getProductPrice(Request $request){
     $data = $request->all();
-    // print_r($data);die;
+    echo "<pre>"; print_r($data);die;
     $proArr = explode("-",$data['choice']);
     $id =  $proArr[0];
     $specific = $proArr[1];

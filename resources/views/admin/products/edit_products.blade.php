@@ -65,6 +65,15 @@
                   <textarea name = "description" id = "description">{{$productDetails->description}}</textarea>
                 </div>
               </div>
+
+               <div class="control-group">
+                <label class="control-label">Accessories & Care</label>
+                <div class="controls">
+                  <textarea name = "acc_care" id = "acc_care">{{$productDetails->accessories_care}}</textarea>
+                </div>
+              </div>
+
+
               <div class="control-group">
                 <label class="control-label">Price</label>
                 <div class="controls">

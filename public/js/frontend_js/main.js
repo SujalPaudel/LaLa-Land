@@ -32,6 +32,9 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#selChoice").change(function(){
 		var choice = $(this).val();
+		if(choice == ""){
+			return false;
+		}
 		$.ajax({
 			type: 'get',
 			url: '/get-product-price',
