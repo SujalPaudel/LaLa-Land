@@ -80,9 +80,14 @@
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>{{$productDetails->product_name}}</h2>
 								<p>Code: {{$productDetails->product_code}}</p>
-								<img src="images/product-details/rating.png" alt="" />
+								<select id = "selChoice" name = "choices" style = "width:150px;">
+									<option value = "">Select</option>
+									@foreach($productDetails->attributes as $choices)
+										<option value = "{{$productDetails->id}}-{{$choices->size}}">{{$choices->size}}</option>
+									@endforeach
+								</select>
 								<span>
-									<span>Rs {{$productDetails->price}}</span>
+									<span id = "getPrice">Rs {{$productDetails->price}}</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
 									<button type="button" class="btn btn-fefault cart">

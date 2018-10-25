@@ -28,3 +28,20 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$(document).ready(function(){
+	$("#selChoice").change(function(){
+		var choice = $(this).val();
+		$.ajax({
+			type: 'get',
+			url: '/get-product-price',
+			data: {choice: choice},
+			success: function(resp){
+			$("#getPrice").html("Rs "+ resp);
+			},
+			error: (error)=>{
+				console.log(error);	
+			}
+		})
+	});
+});

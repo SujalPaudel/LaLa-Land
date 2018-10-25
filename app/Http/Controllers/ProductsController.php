@@ -235,9 +235,23 @@ class ProductsController extends Controller
   }
 
   public function product($id = null){
-    $productDetails = Products::where(['id'=>$id])->first();
+    $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
+    $productDetails = json_decode(json_encode($productDetails));
     // echo "<pre>";print_r($productDetails);die;
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
     return view('products.detail')->with(compact('productDetails', 'categories'));
   }
+
+  public function getProductPrice(Request $request){
+    $data = $request->all();
+    // print_r($data);die;
+    $proArr = explode("-",$data['choice']);
+    $id =  $proArr[0];
+    $specific = $proArr[1];
+    // echo $id;die;
+    $one = ProductAttribute::where(['product_id'=>$id, 'size'=>$specific])->first();
+    echo $one->price;
+  }
+
+
 }
