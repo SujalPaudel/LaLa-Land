@@ -8,7 +8,9 @@ use Auth;
 use App\Category;
 use App\Products;
 use App\ProductAttribute;
+use App\ProductsImage;
 use Image;
+
  
 
 class ProductsController extends Controller
@@ -218,6 +220,34 @@ class ProductsController extends Controller
         return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'Product attributes are successfully added');
       }
      return view('admin.products.add_attributes')->with(compact('productDetails'));
+    }
+
+    public function addImages(Request $request, $id = null){
+      $productDetails = Products::with('attributes')->where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
+      if($request->isMethod('post')){
+        $data = $request->all();
+        // echo "<pre>";print_r($data);die;
+        if($request->hasFile('image')){
+          $files = $request->file('image');
+          // Upload images after resize
+          foreach($files as $file){
+            $image = new ProductsImage;
+            $extension = $file->getClientOriginalExtension();
+            $fileName = rand(111, 999999).'.'.$extension;
+            $large_image_path = 'images/backend_images/products/large_images/'.$fileName;
+            $medium_image_path = 'images/backend_images/products/medium_images/'.$fileName;
+            $small_image_path = 'images/backend_images/products/small_images/'.$fileName;
+            Image::make($file)->save($large_image_path);
+            Image::make($file)->resize(600,600)->save($medium_image_path);
+            Image::make($file)->resize(300,300)->save($small_image_path);
+            $image->image = $fileName;
+            $image->product_id = $data['product_id'];
+            $image->save();
+          }
+        }
+        return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Product Images is added successfully');
+      }
+     return view('admin.products.add_images')->with(compact('productDetails'));
     }
 
     public function deleteAttribute($id = null){
