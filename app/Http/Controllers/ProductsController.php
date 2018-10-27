@@ -186,6 +186,36 @@ class ProductsController extends Controller
       return redirect()->back()->with('flash_message_success', 'The product image has been successfully deleted');
     }
 
+    public function deleteAltImage($id = null){
+
+      // get the product details
+      $productImage = ProductsImage::where(['id'=>$id])->first();
+
+      $large_image_path = 'images/backend_images/products/large_images/';
+      $medium_image_path = 'images/backend_images/products/medium_images/';
+      $small_image_path = 'images/backend_images/products/small_images/';
+
+      // Delete the large image if it exists in the folder
+      if(file_exists($large_image_path.$productImage->image)){
+        unlink($large_image_path.$productImage->image);
+      }
+
+      // Delete the large image if it exists in the folder
+      if(file_exists($medium_image_path.$productImage->image)){
+        unlink($medium_image_path.$productImage->image);
+      }
+
+      // Delete the large image if it exists in the folder
+      if(file_exists($small_image_path.$productImage->image)){
+        unlink($small_image_path.$productImage->image);
+      }
+
+      ProductsImage::where(['id'=>$id])->delete();
+      return redirect()->back()->with('flash_message_success', 'The product image has been successfully deleted');
+    }
+
+
+
     public function addAttributes(Request $request, $id = null){
       $productDetails = Products::with('attributes')->where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
       if($request->isMethod('post')){
@@ -247,7 +277,12 @@ class ProductsController extends Controller
         }
         return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Product Images is added successfully');
       }
-     return view('admin.products.add_images')->with(compact('productDetails'));
+
+      $productsImages = ProductsImage::where(['product_id'=>$id])->get();
+      // $productsImages = json_decode(json_encode($productsImages));
+      // echo "<pre>";print_r($productsImages);die;
+
+     return view('admin.products.add_images')->with(compact('productDetails', 'productsImages'));
     }
 
     public function deleteAttribute($id = null){
