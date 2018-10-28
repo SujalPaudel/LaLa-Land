@@ -40,9 +40,17 @@ $(document).ready(function(){
 		$.ajax({
 			type: 'get',
 			url: '/get-product-price',
-			data: {choice: choice},
+			data: {choice: choice},	
 			success: function(resp){
-			$("#getPrice").html("Rs "+ resp);
+				var arr = resp.split('#');
+					$("#getPrice").html("Rs "+ arr[0]);						
+				if(arr[1]==0){
+					$('#cartButton').hide();
+					$('#avaibility').text("Out of Stock");
+				}else{
+					$('#cartButton').show();
+					$('#avaibility').text('In Stock');
+				}
 			},
 			error: (error)=>{
 				console.log(error);	

@@ -71,9 +71,10 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>View Products</h5>
+            <h5>View Attributes</h5>
           </div>
           <div class="widget-content nopadding">
+            <form action = "{{url('admin/edit-attributes/'.$productDetails->id)}}" method = "post">{{csrf_field()}}
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
@@ -88,12 +89,13 @@
               <tbody>
               @foreach($productDetails['attributes'] as $attribute)
                 <tr class="gradeX">
-                  <td>{{ $attribute->id }}</td>
+                  <td><input type = "hidden" name = "idAttr[]" value = "{{ $attribute->id }}">{{ $attribute->id }}</td>
                   <td>{{ $attribute->sku }}</td>
                   <td>{{ $attribute->size }}</td>
-                  <td>{{ $attribute->price}}</td>
-                  <td>{{ $attribute->stock}}</td>                 
+                  <td><input type = "text" name = "price[]" value = "{{ $attribute->price}}"></td>
+                  <td><input type = "text" name = "stock[]" value = "{{ $attribute->stock}}"></td>                 
                   <td class="center">
+                    <input type="submit" value = "Update" class = "btn btn-primary btn-mini">
                     <a rel = "{{$attribute->id}}" rel1 = "delete-attribute" href = "javascript:" class = "btn btn-danger btn-mini deleteRecord">Delete</a>
                   </td>
                 </tr>             

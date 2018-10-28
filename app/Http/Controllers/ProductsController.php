@@ -252,6 +252,17 @@ class ProductsController extends Controller
      return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
 
+    public function editAttributes(Request $request, $id = null){
+      if($request->isMethod('post')){
+        $data = $request->all();
+        foreach($data['idAttr'] as $key => $value){ // for each data as key value pair
+          // echo "<pre>";print_r($key);die; 
+          ProductAttribute::where(['id'=>$data['idAttr'][$key]])->update(['price'=>$data['price'][$key], 'stock'=>$data['stock'][$key]]); // where id is attribute id based on key(0, 1, 2)
+        }
+        return redirect()->back()->with('flash_message_success', 'Product attribute has been updated successfully!!');
+      }
+    }
+
     public function addImages(Request $request, $id = null){
       $productDetails = Products::with('attributes')->where(['id'=>$id])->first(); // this is basically the fetch operation, here the variable stores the value
       if($request->isMethod('post')){
@@ -327,18 +338,21 @@ class ProductsController extends Controller
 
 
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
-    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages'));
+
+    $total_stock = ProductAttribute::where('product_id', $id)->sum('stock');
+    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock'));
   }
 
   public function getProductPrice(Request $request){
     $data = $request->all();
-    echo "<pre>"; print_r($data);die;
     $proArr = explode("-",$data['choice']);
     $id =  $proArr[0];
     $specific = $proArr[1];
     // echo $id;die;
     $one = ProductAttribute::where(['product_id'=>$id, 'size'=>$specific])->first();
     echo $one->price;
+    echo "#";
+    echo $one->stock;
   }
 
 
