@@ -30,6 +30,8 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+
+	// Change price with choice
 	$("#selChoice").change(function(){
 		var choice = $(this).val();
 		if(choice == ""){
@@ -46,5 +48,11 @@ $(document).ready(function(){
 				console.log(error);	
 			}
 		})
+	});
+
+	// Replace main image with viewing image
+	$(".changingImages").hover(function(){
+		var image = $(this).attr('src');
+		$(".mainImage").attr('src', image);
 	});
 });

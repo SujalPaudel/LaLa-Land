@@ -322,8 +322,12 @@ class ProductsController extends Controller
     $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
     $productDetails = json_decode(json_encode($productDetails));
     // echo "<pre>";print_r($productDetails);die;
+
+    $productAltImages = ProductsImage::where(['product_id'=>$id])->get();
+
+
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
-    return view('products.detail')->with(compact('productDetails', 'categories'));
+    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages'));
   }
 
   public function getProductPrice(Request $request){
