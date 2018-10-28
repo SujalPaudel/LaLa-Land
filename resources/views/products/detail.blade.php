@@ -9,15 +9,20 @@
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src="{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}" class = "mainImage" alt="" />
+							<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+								<a href = "{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}">
+								<img src="{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}" style = "width:300px;" class = "mainImage" alt="" />
+							</div>
 						</div>
 						<div id="similar-product" class="carousel slide" data-ride="carousel">
 							
 							  <!-- Wrapper for slides -->
 							    <div class="carousel-inner">
-									<div class="item active">
+									<div class="item active thumbnails">
 										@foreach($productAltImages as $altimage)
-										  <img src="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
+											<a href="{{asset('/images/backend_images/products/large_images/'.$altimage->image)}}" data-standard="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}">
+										 	 <img src="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
+										 	</a>
 										@endforeach
 									</div>
 									</div>
