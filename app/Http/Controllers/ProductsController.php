@@ -106,11 +106,16 @@ class ProductsController extends Controller
             Image::make($image_tmp)->save($large_image_path);
             Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
             Image::make($image_tmp)->resize(300,300)->save($small_image_path);      
-          }
+          }}
           else{
             $filename = $data['current_image'];
+          }       
+
+          if(empty($data['status'])){
+            $status = 0;
+          }else{
+            $status = 1;
           }
-        }
 
         Products::where(['id'=>$id])->update(['category_id'=>$data['category_id'],
                                              'product_name'=>$data['product_name'],
@@ -118,9 +123,11 @@ class ProductsController extends Controller
                                              'product_color'=>$data['product_color'],
                                              'description'=>$data['description'],
                                              'price'=>$data['price'],
-                                             'image'=>$filename]
+                                             'image'=>$filename,
+                                             'status'=>$status
+                                             ]
                                              );
-
+      
         return redirect()->back()->with('flash_message_success', 'Product has been updated successfully');
       }
 
@@ -322,7 +329,7 @@ class ProductsController extends Controller
 
       }else{
         //if it is the subCategory
-        $productsAll = Products::where(['category_id' => $categoryDetails->id])->get();
+        $productsAll = Products::where(['category_id' => $categoryDetails->id])->where('status',1)->get();
 
       }   
       return view('products.listing')->with(compact('categories','categoryDetails','productsAll'));
@@ -330,8 +337,13 @@ class ProductsController extends Controller
   }
 
   public function product($id = null){
+
+    $productCount = Products::where(['id'=>$id, 'status'=>1])->count();
+    if($productCount == 0){
+      abort(404);
+   }
     $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
-    $productDetails = json_decode(json_encode($productDetails));
+    // $productDetails = json_decode(json_encode($productDetails));
     // echo "<pre>";print_r($productDetails);die;
 
     $relatedProducts = Products::where('id','!=',$id)->where(['category_id'=>$productDetails->category_id])->get();
