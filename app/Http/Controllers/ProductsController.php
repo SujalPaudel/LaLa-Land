@@ -400,7 +400,7 @@ class ProductsController extends Controller
                               'user_email'=>$data['user_email'],
                               'session_id'=>$session_id]);
 
-    return redirect('cart')->with('flash_message_success', 'Yes the product');
+    return redirect('cart')->with('flash_message_success', 'Product Successfully added into the cart !!');
   }
 
   public function cart(){
@@ -417,6 +417,11 @@ class ProductsController extends Controller
     // echo "<pre>";print_r($userCart);
 
     return view('products.cart')->with(compact('userCart'));
+  }
+
+  public function deleteCartProduct($id = null){
+    DB::table('cart')->where(['id'=>$id])->delete();
+    return redirect()->back()->with('flash_message_success', 'Successfully removed the product from the cart !!');
   }
 
 }

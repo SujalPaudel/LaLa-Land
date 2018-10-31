@@ -10,17 +10,18 @@
         </ol>
       </div>
       <div class="table-responsive cart_info">
-        @if(Session::has('flash_message_success'))
-          <div class = "alert alert-success alert-block">
-            <button type = "button" class = "close" data-dismiss = "alert">x</button>
-              <strong>Product has been successfully added to the cart !! </strong>
-          </div>
-        @endif
 
         @if(Session::has('flash_message_error'))
           <div class = "alert alert-error alert-block">
-            <button type = "button" class = "close" data-dismiss = "alert">x</button>
-              <strong>(!! session('flash_message_error') !!)</strong>
+              <button type = "button" class = "close" data-dismiss = "alert">x</button>
+                  <strong>{!! session('flash_message_error') !!}</strong>
+          </div>
+        @endif 
+
+        @if(Session::has('flash_message_success'))
+          <div class = "alert alert-success alert-block">
+              <button type = "button" class = "close" data-dismiss = "alert">x</button>
+                  <strong>{!! session('flash_message_success') !!}</strong>
           </div>
         @endif
 
@@ -59,7 +60,7 @@
                 <p class="cart_total_price">$59</p>
               </td>
               <td class="cart_delete">
-                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                <a class="cart_quantity_delete" href="{{url('/cart/delete-product/'.$cart->id)}}"><i class="fa fa-times"></i></a>
               </td>
             </tr>
           @endforeach
