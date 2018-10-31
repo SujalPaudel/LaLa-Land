@@ -43,7 +43,8 @@ $(document).ready(function(){
 			data: {choice: choice},	
 			success: function(resp){
 				var arr = resp.split('#');
-					$("#getPrice").html("Rs "+ arr[0]);						
+					$("#getPrice").html("Rs "+ arr[0]);		
+					$("#price").val(arr[0]);			
 				if(arr[1]==0){
 					$('#cartButton').hide();
 					$('#avaibility').text("Out of Stock");

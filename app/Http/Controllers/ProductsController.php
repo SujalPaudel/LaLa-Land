@@ -10,6 +10,7 @@ use App\Products;
 use App\ProductAttribute;
 use App\ProductsImage;
 use Image;
+use DB;
 
  
 
@@ -369,6 +370,24 @@ class ProductsController extends Controller
     echo $one->price;
     echo "#";
     echo $one->stock;
+  }
+
+
+  public function addtocart(Request $request){
+    $data = $request->all();
+    // DB::table('cart')->insert(['product_id'=>$data['product_id']]);
+
+    // echo "<pre>";print_r($data['choices']);die;
+    $sizeArr = explode("-", $request->choices);
+    DB::table('cart')->insert(['product_id'=>$data['product_id'],
+                              'product_name'=>$data['product_name'], 
+                              'product_code'=>$data['product_code'],
+                              'product_color'=>$data['product_color'],
+                              'price'=>$data['product_price'],
+                              'size'=>$sizeArr[1],
+                              'quantity'=>$data['quantity'],
+                              'user_email'=>"",
+                              'session_id'=>""]);
   }
 
 
