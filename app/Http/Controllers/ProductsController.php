@@ -11,6 +11,7 @@ use App\ProductAttribute;
 use App\ProductsImage;
 use Image;
 use DB;
+use Session;
 
  
 
@@ -375,9 +376,19 @@ class ProductsController extends Controller
 
   public function addtocart(Request $request){
     $data = $request->all();
-    // DB::table('cart')->insert(['product_id'=>$data['product_id']]);
 
-    // echo "<pre>";print_r($data['choices']);die;
+    if(empty($data['user_email'])){
+      $data['user_email'] = "";
+    }
+
+    $session_id = Session::get('session_id');
+
+    if(empty($session_id)){
+      $session_id = str_random(40);
+      Session::put('session_id', $session_id);
+    }
+    
+
     $sizeArr = explode("-", $request->choices);
     DB::table('cart')->insert(['product_id'=>$data['product_id'],
                               'product_name'=>$data['product_name'], 
@@ -386,9 +397,16 @@ class ProductsController extends Controller
                               'price'=>$data['product_price'],
                               'size'=>$sizeArr[1],
                               'quantity'=>$data['quantity'],
-                              'user_email'=>"",
-                              'session_id'=>""]);
+                              'user_email'=>$data['user_email'],
+                              'session_id'=>$session_id]);
+
+    return redirect('cart')->with('flash_message_success', 'Yes the product');
   }
 
+  public function cart(){
+    $session_id = Session::get('session_id');
+    $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+    return view('products.cart')->with(compact('userCart'));
+  }
 
 }
