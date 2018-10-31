@@ -406,6 +406,16 @@ class ProductsController extends Controller
   public function cart(){
     $session_id = Session::get('session_id');
     $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+    // echo "<pre>";print_r($userCart);die;
+    foreach($userCart as $key => $product){
+      // echo $product->product_id;
+      $productDetails = Products::where(['id'=>$product->product_id])->first();
+      // $userCart[$key]->image = $productDetails->image;
+      $userCart[$key]->image = $productDetails->image;
+
+    }
+    // echo "<pre>";print_r($userCart);
+
     return view('products.cart')->with(compact('userCart'));
   }
 
