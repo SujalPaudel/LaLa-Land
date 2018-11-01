@@ -38,6 +38,9 @@ Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtocart');
 // Deleting product from the cart
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');
 
+// Update the product quantity in the cart
+Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartProduct');
+
 //get the price of choice
 Route::get('/get-product-price', 'ProductsController@getProductPrice');
 

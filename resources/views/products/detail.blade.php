@@ -6,6 +6,14 @@
 		<div class="row">
 			@include('layouts.frontLayout.front_sidebar');			
 			<div class="col-sm-9 padding-right">
+
+        @if(Session::has('flash_message_error'))
+          <div class = "alert alert-error alert-block" style="background-color: #D03D33;">
+              <button type = "button" class = "close" data-dismiss = "alert">x</button>
+                  <strong>{!! session('flash_message_error') !!}</strong>
+          </div>
+        @endif
+
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">
 						<div class="view-product">
