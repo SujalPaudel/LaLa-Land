@@ -346,7 +346,7 @@ class ProductsController extends Controller
    }
     $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
     // $productDetails = json_decode(json_encode($productDetails));
-    // echo "<pre>";print_r($productDetails);die;
+    // echo "<pre>";print_r($productDetails->attributes);die;
 
     $relatedProducts = Products::where('id','!=',$id)->where(['category_id'=>$productDetails->category_id])->get();
     // $relatedProducts = json_decode(json_encode($relatedProducts));
@@ -376,6 +376,7 @@ class ProductsController extends Controller
 
   public function addtocart(Request $request){
     $data = $request->all();
+    // echo "<pre>";print_r($data);die;
     if(empty($data['user_email'])){
       $data['user_email'] = "";
     }
@@ -392,22 +393,22 @@ class ProductsController extends Controller
     $sizeArr = explode("-", $request->choices);
 
     $countProducts = DB::table('cart')->where(['product_id'=>$data['product_id'],
-                              'product_name'=>$data['product_name'], 
-                              'product_code'=>$data['product_code'],
-                              'product_color'=>$data['product_color'],
-                              'size'=>$sizeArr[1],
-                              'session_id'=>$session_id])->count();
+                                               'product_color'=>$data['product_color'],
+                                               'size'=>$sizeArr[1],
+                                               'session_id'=>$session_id])->count();
 
     if($countProducts>0){ 
       return redirect()->back()->with('flash_message_error', 'Product already exists on the cart !!');
     }
     else{
 
-       $getSKU = ProductAttribute::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]]);
+       $getSKU = ProductAttribute::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]])->first();
+       $getSKU = json_decode(json_encode($getSKU));
+       // echo "<pre>";print_r($getSKU);die;
 
        DB::table('cart')->insert(['product_id'=>$data['product_id'],
                                      'product_name'=>$data['product_name'], 
-                                     'product_code'=>$data['product_code'],
+                                     'product_code'=>$getSKU->sku,
                                      'product_color'=>$data['product_color'],
                                      'price'=>$data['product_price'],
                                      'size'=>$sizeArr[1],
@@ -440,9 +441,10 @@ class ProductsController extends Controller
     return redirect()->back()->with('flash_message_success', 'Successfully removed the product from the cart !!');
   }
 
-  public function updateCartProduct($id = null){
+  public function updateCartQuantity($id = null){
     // $getCartDetails = DB::table('cart')->where('id', $id)->first();
-    // $getAttrStock = ProductAttribute::where('sku', $getCartDetails->product_code)->first();
+    // $getAttributeStock = ProductAttribute::where('sku', $getCartDetails->product_code)->first();
+    // echo $getAttributeStock;die;
     DB::table('cart')->where('id', $id)->increment('quantity');
     return redirect('cart')->with('flash_message_success', 'Updated quantity successfully');
   }

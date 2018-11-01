@@ -41,9 +41,7 @@
 						<form name = "addtocartform" id = "addtocartform" action = "{{url('/add-cart')}}" method = "post">{{csrf_field()}}
 							<input type = "hidden" name = "product_id" value = "{{$productDetails->id}}">
 							<input type = "hidden" name = "product_name" value = "{{$productDetails->product_name}}">
-							@foreach($productDetails->attributes as $code)
-								<input type = "hidden" name = "product_code" value = "{{$code->sku}}">
-							@endforeach
+							<input type = "hidden" name = "product_code" value = "{{$productDetails->product_code}}">
 							<input type = "hidden" name = "product_color" value = "{{$productDetails->product_color}}">
 							<input type = "hidden" name = "product_price" id = "price" value = "{{$productDetails->price}}">
 						<div class="product-information"><!--/product-information-->
