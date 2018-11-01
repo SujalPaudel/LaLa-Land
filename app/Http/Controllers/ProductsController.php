@@ -441,12 +441,18 @@ class ProductsController extends Controller
     return redirect()->back()->with('flash_message_success', 'Successfully removed the product from the cart !!');
   }
 
-  public function updateCartQuantity($id = null){
-    // $getCartDetails = DB::table('cart')->where('id', $id)->first();
-    // $getAttributeStock = ProductAttribute::where('sku', $getCartDetails->product_code)->first();
-    // echo $getAttributeStock;die;
-    DB::table('cart')->where('id', $id)->increment('quantity');
-    return redirect('cart')->with('flash_message_success', 'Updated quantity successfully');
-  }
+  public function updateCartQuantity($id = null, $quantity){
+    $getCartDetails = DB::table('cart')->where('id',$id)->first();
+    $getAttributeStock = ProductAttribute::where('sku',$getCartDetails->product_code)->first();
+    $inStock = $getAttributeStock->stock;echo '--';
+    $inDemand = $getCartDetails->quantity+$quantity;
 
+    if($inStock >= $inDemand){
+      DB::table('cart')->where('id', $id)->increment('quantity');
+      return redirect('cart')->with('flash_message_success', 'Updated quantity successfully');
+    }else{
+      return redirect()->back()->with('flash_message_error', 'The product is out of stock !!');
+    }
+
+  }
 }
