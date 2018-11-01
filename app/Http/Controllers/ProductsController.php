@@ -376,7 +376,6 @@ class ProductsController extends Controller
 
   public function addtocart(Request $request){
     $data = $request->all();
-
     if(empty($data['user_email'])){
       $data['user_email'] = "";
     }
@@ -388,6 +387,7 @@ class ProductsController extends Controller
       Session::put('session_id', $session_id);
     }
     
+
 
     $sizeArr = explode("-", $request->choices);
 
@@ -402,6 +402,9 @@ class ProductsController extends Controller
       return redirect()->back()->with('flash_message_error', 'Product already exists on the cart !!');
     }
     else{
+
+       $getSKU = ProductAttribute::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]]);
+
        DB::table('cart')->insert(['product_id'=>$data['product_id'],
                                      'product_name'=>$data['product_name'], 
                                      'product_code'=>$data['product_code'],
@@ -438,6 +441,8 @@ class ProductsController extends Controller
   }
 
   public function updateCartProduct($id = null){
+    // $getCartDetails = DB::table('cart')->where('id', $id)->first();
+    // $getAttrStock = ProductAttribute::where('sku', $getCartDetails->product_code)->first();
     DB::table('cart')->where('id', $id)->increment('quantity');
     return redirect('cart')->with('flash_message_success', 'Updated quantity successfully');
   }
