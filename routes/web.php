@@ -44,6 +44,9 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCa
 //get the price of choice
 Route::get('/get-product-price', 'ProductsController@getProductPrice');
 
+//Apply Coupon
+Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');
+
 Route::group(['middleware' => ['auth']], function(){
   Route::get('/admin/dashboard', 'AdminController@dashboard');
   Route::get('/admin/settings', 'AdminController@settings');

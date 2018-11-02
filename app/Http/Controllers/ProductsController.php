@@ -9,6 +9,7 @@ use App\Category;
 use App\Products;
 use App\ProductAttribute;
 use App\ProductsImage;
+use App\Coupon;
 use Image;
 use DB;
 use Session;
@@ -454,5 +455,16 @@ class ProductsController extends Controller
       return redirect()->back()->with('flash_message_error', 'The product is out of stock !!');
     }
 
+  }
+
+  public function applyCoupon(Request $request){
+    $data = $request->all();
+    // echo "<pre>";print_r($data);die;
+    $couponCount = Coupon::where(['coupon_code'=>$data['coupon_code']])->count();
+    if($couponCount == 0){
+      return redirect()->back()->with('flash_message_error', 'Sorry the CouponCode is Invalid !!');
+    }else{
+      echo "Ramlal in the house";
+    }
   }
 }
