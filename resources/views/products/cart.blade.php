@@ -97,7 +97,13 @@
         <div class="col-sm-6">
           <div class="total_area">
             <ul>
-              <li>Total <span>Rs {{$total_amount}}</span></li>
+            @if(!empty(Session::get('CouponAmount')))
+              <li>SubTotal<span>Rs {{$total_amount}}</span></li>
+              <li>Coupon Discount<span>Rs {{Session::get('CouponAmount')}}</span></li>
+              <li>Grand Total <span>Rs {{$total_amount - Session::get('CouponAmount')}}</span></li>              
+            @else
+              <li>Grand Total <span>Rs {{$total_amount}}</span></li>
+            @endif
             </ul>
               <a class="btn btn-default update" href="">Update</a>
               <a class="btn btn-default check_out" href="">Check Out</a>

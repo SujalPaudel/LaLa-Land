@@ -458,6 +458,11 @@ class ProductsController extends Controller
   }
 
   public function applyCoupon(Request $request){
+    
+
+    Session::forget('CouponAmount');
+    Session::forget('CouponCode');
+
     $data = $request->all();
     // echo "<pre>";print_r($data);die;
     $couponCount = Coupon::where(['coupon_code'=>$data['coupon_code']])->count();
@@ -474,6 +479,25 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_error', 'Sorry, the coupon date is expired !!');
       }
 
+      // Get the cart's totalAmount
+
+      $session_id = Session::get('session_id');
+      $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+      $totalAmount = 0;
+      foreach($userCart as $item){
+        $totalAmount = $totalAmount + ($item->price * $item->quantity);
+      } 
+      if($couponDetails->amount_type == "Fixed"){
+        $couponAmount = $couponDetails->amount;
+      }else{
+        $couponAmount = $totalAmount * ($couponDetails->amount/100);
+      }
+
+      //Add CouponCode and Coupon Amount in the session
+      Session::put('CouponAmount', $couponAmount);
+      Session::put('CouponCode', $data['coupon_code']);
+
+      return redirect()->back()->with('flash_message_success', 'Coupon Code successfully applied. You are availing discount.');
     }
   }
 }
