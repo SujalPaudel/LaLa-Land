@@ -464,7 +464,16 @@ class ProductsController extends Controller
     if($couponCount == 0){
       return redirect()->back()->with('flash_message_error', 'Sorry the CouponCode is Invalid !!');
     }else{
-      echo "Ramlal in the house";
+      $couponDetails = Coupon::where('coupon_code', $data['coupon_code'])->first();
+      if($couponDetails->status == 0){
+        return redirect()->back()->with('flash_message_error', 'The coupon is Inactive!!');
+      }
+      $expiryDate = $couponDetails->expiry_date;
+      $currentDate = date('Y-m-d');
+      if($expiryDate < $currentDate){
+        return redirect()->back()->with('flash_message_error', 'Sorry, the coupon date is expired !!');
+      }
+
     }
   }
 }
