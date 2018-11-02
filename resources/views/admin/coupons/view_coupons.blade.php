@@ -65,7 +65,7 @@
 
                   <td class="center">
                     <a href = "{{url('/admin/edit-coupon/'.$coupon->id) }}" class = "btn btn-primary btn-mini" title = "Edit Coupon">Edit</a> 
-                    <a rel = "{{$coupon->id}}" rel1 = "delete-coupon" id = "delCoupon" href = "javascript:" class = "btn btn-danger btn-mini deleteRecord">Delete</a>
+                    <a id = "delCoupon" rel = "{{$coupon->id}}" rel1 = "del-coupon" id = "delCoupon" href = "javascript:" class = "btn btn-danger btn-mini deleteRecord">Delete</a>
                   </td>
                 </tr>
  

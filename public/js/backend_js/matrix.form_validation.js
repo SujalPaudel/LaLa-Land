@@ -246,6 +246,7 @@ $(document).ready(function(){
 		return false;
 	});
 
+
 	// $("#delProduct").click(function(){
 	// 	if(confirm("Are you sure you want to delete this Product?")){
 	// 		return true;
@@ -274,6 +275,7 @@ $(document).ready(function(){
 			window.location.href = "/admin/"+deleteFunction+"/"+id;
 		});
 	});
+
 
 	$(document).ready(function(){
 	    var maxField = 10; //Input fields increment limitation
