@@ -54,10 +54,37 @@ class BannerController extends Controller
     }
 
     public function editBanner(Request $request, $id = null){
+
       if($request->isMethod('post')){
         $data = $request->all();
-        echo "<pre>";print_r($data);die;
+        // echo "<pre>";print_r($data);die;
+
+        if(empty($data['status'])){
+          $status = '0';
+        }else{
+          $status = '1';
+        }        
+
+        // upload image
+        if($request->hasFile('image')){
+          $image_tmp = Input::file('image');
+          if($image_tmp->isValid()){
+            $extension = $image_tmp->getClientOriginalExtension();
+            $filename = rand(111, 99999).'.'.$extension;
+
+            $banner_path = 'images/frontend_images/banners/'.$filename;
+            // Resize Image
+
+            Image::make($image_tmp)->resize(1140,340)->save($banner_path);
+          }}
+          else{
+            $filename = $data['current_image'];
+          } 
+
+          Banner::where('id', $id)->update(['title'=>$data['title'], 'link'=>$data['link'], 'status'=>$status, 'image'=>$filename]);
+          return redirect()->back()->with('flash_message_success', 'The banner has been successfully updated');
       }
+
       $bannerDetails = Banner::where('id', $id)->first();
       // echo $banner;die;
       return view('admin.banners.edit_banners')->with(compact('bannerDetails'));
