@@ -83,6 +83,9 @@ Route::group(['middleware' => ['auth']], function(){
   Route::match(['get', 'post'], '/admin/edit-coupon/{id}', 'CouponsController@editCoupon');
   Route::get('/admin/del-coupon/{id}', 'CouponsController@deleteCoupon');
 
+  // Banner Routes
+
+  Route::match(['get', 'post'], '/admin/add-banner', 'BannerController@addBanner');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
