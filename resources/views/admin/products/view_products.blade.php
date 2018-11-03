@@ -53,9 +53,8 @@
                   <td>{{ $product->description }}</td>
                   <td>{{ $product->price }}</td>
                   <td>
-                  @if(!empty($product->price ))
-                    <img src = "{{asset('/images/backend_images/products/small_images/'.$product->image)}}" style = "width: 60px;">
-                  
+                  @if(!empty($product->image ))
+                    <img src = "{{asset('/images/backend_images/products/small_images/'.$product->image)}}" style = "width: 60px;">            
                   </td>
                   @endif
                   
