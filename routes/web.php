@@ -91,4 +91,8 @@ Route::group(['middleware' => ['auth']], function(){
   Route::get('/admin/delete-banner/{id}', 'BannerController@deleteBanner');
 });
 
+// About the user Login/Register
+
+Route::match(['get','post'], '/login-register', 'UsersController@register');
+
 Route::get('/home', 'HomeController@index')->name('home');
