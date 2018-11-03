@@ -89,5 +89,11 @@ class BannerController extends Controller
       // echo $banner;die;
       return view('admin.banners.edit_banners')->with(compact('bannerDetails'));
     }
+
+    public function deleteBanner($id){
+      Banner::where('id', $id)->delete();
+      
+      return redirect()->back()->with('flash_message_success', 'The banner is successfully deleted !!');
+    }
 }
 
