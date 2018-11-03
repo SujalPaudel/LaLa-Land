@@ -14,19 +14,13 @@
             </ol>
             
             <div class="carousel-inner">
-              <div class="item active">
-                <img src = "images/frontend_images/banners/forYou.png">
-              </div>              
-              
-              <div class="item">
-                <img src = "images/frontend_images/banners/her.png">  
-              </div>
 
-              <div class="item">
-                <img src = "images/frontend_images/banners/him.png">  
-              </div>
-              
-          </div>
+              @foreach($banners as $key => $banner)
+                <div class="item @if($key == 0) active @endif">
+                  <img src = "{{asset('images/frontend_images/banners/'.$banner->image)}}">
+                </div>    
+              @endforeach                        
+            </div>
             
             <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
               <i class="fa fa-angle-left"></i>
