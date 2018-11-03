@@ -98,3 +98,43 @@ $(document).ready(function(){
 			api2._init();
 		}
 	});
+
+
+	// Jquery validations on user login/register form
+
+$().ready(function(){
+	$("#registerForm").validate({
+		rules:{
+			name:{
+				required:true,
+				minlength:2,
+				accept: "[a-zA-Z]+"
+			},
+			password:{
+				required:true,
+				minlength:6
+			},
+			email:{
+				required:true,
+				email:true,
+				remote: '/check-email'
+			}
+		},
+		messages:{
+			name:{
+				required:"Please Enter your Name",
+				minlength: "Name must be atleast 2 characters long",
+				accept: "Your Name must contain letters only"
+			},
+			password: {
+				required: "Please provide the password",
+				minlength: "Your password must be atleast 6 characters long"
+			},
+			email:{
+				required: "The Email is required",
+				email: "Please enter the valid Email",
+				remote: "The Email alreay exists !!"
+			}
+		}
+	});
+});
