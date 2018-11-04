@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Session;
+use App\State;
 
 class UsersController extends Controller
 {
@@ -59,7 +60,13 @@ class UsersController extends Controller
     }
 
     public function account(){
-      return view('users.account');
+      $user_id = Auth::user()->id;
+      $userDetails = User::where('id', $user_id)->get();
+      echo $userDetails;die;
+      $states = State::get();
+      // $states = json_decode(json_encode($states));
+      // echo "<pre>";$state;print_r($state);die;
+      return view('users.account')->with(compact('states', 'userDetails'));
     }    
 
     public function logout(){
