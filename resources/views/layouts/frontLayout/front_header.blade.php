@@ -69,7 +69,7 @@ $mainCategories = Controller::mainCategories();
                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                 <li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                 @if(Auth::check())
-                  <li><a href="#"><i class="fa fa-user"></i> Account</a></li>                
+                  <li><a href="{{url('/account')}}"><i class="fa fa-user"></i> Account</a></li>                
                   <li><a href="{{url('/user-logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
                 @else
                   <li><a href="{{url('/login-register')}}"><i class="fa fa-lock"></i>Login</a></li>
