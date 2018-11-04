@@ -4,26 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UsersController extends Controller
 {
+
+    public function userLoginRegister(){
+      return view('users.login_register');
+    }
+
     public function register(Request $request){
       if($request->isMethod('post')){
         $data = $request->all();
         // echo "<pre>";print_r($data);die;  
-
-        $userCount = User::where('email', $data['email'])->count();
-        if($userCount >0){
-          return redirect()->back()->with('flash_message_error', 'The user with this Email Id already exists !!');
+        $usersCount = User::where('email', $data['email'])->count();
+        if($usersCount>0){
+          return redirect()->back()->with('flash_message_error', 'The user with this Email already exists!!');
         }else{
-          echo "success";die;
-          // $users = new User;
-          // $user->name = $data['name'];
-          // $user->email = $data['email'];
-          // $user->email = $data['email'];
-        }  
-      }
-      return view('users.login_register');
+          $users = new User;
+          $users->name = $data['name'];
+          $users->email = $data['email'];
+          $users->password = bcrypt($data['password']);
+          $users->save();
+          // return redirect()->back()->with('flash_message_success', 'You have been successfully registered');
+          
+          // After the above operation is performed the next job is to login the user simultaneously
+          if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
+            return redirect('/cart');
+          }
+        }
+      }            
     }
 
     public function checkMail(Request $request){
@@ -34,5 +44,10 @@ class UsersController extends Controller
       }else{
         echo "true";die;
       }
+    }
+
+    public function logout(){
+      Auth::logout();
+      return redirect('/')->with('flash_message_success', 'You have been successfully logged out!!');
     }
 }

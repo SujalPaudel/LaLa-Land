@@ -96,6 +96,12 @@ Route::group(['middleware' => ['auth']], function(){
 
 // About the user Login/Register
 
-Route::match(['get','post'], '/login-register', 'UsersController@register');
+Route::get('/login-register', 'UsersController@userLoginRegister');
+
+// Post the users registration credentials
+
+Route::post('/user-register', 'UsersController@register');
+
+Route::get('/user-logout', 'UsersController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
