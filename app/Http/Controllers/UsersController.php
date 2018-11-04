@@ -32,7 +32,7 @@ class UsersController extends Controller
       if($usersCount>0){
         echo "false";
       }else{
-        echo "True";
+        echo "true";die;
       }
     }
 }
