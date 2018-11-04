@@ -46,8 +46,30 @@ class UsersController extends Controller
       }
     }
 
+    public function checkMailForLogin(Request $request){
+      $data = $request->all();
+      $usersCount = User::where('email',$data['email'])->count();
+      if($usersCount>0){
+        echo "true";
+      }else{
+        echo "false";die;
+      }
+    }    
+
     public function logout(){
       Auth::logout();
       return redirect('/')->with('flash_message_success', 'You have been successfully logged out!!');
     }
+
+    public function login(Request $request){
+      if($request->isMethod('post')){
+        $data = $request->all();
+        // echo "<pre>";print_r($data);die;
+        if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
+          return redirect('/cart');
+        }else{
+          return redirect()->back()->with('flash_message_error', 'The credentials are invalid');
+        }
+     }
+  }
 }

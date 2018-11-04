@@ -138,11 +138,36 @@ $().ready(function(){
 		}
 	});
 
+	$("#loginForm").validate({
+		rules:{
+			email:{
+				required:true,
+				email:true,
+				remote: '/check-email-for-login'
+			},
+			password:{
+				required:true,
+			}
+		},
+		messages:{
+			email:{
+				required: "The Email is required",
+				email: "Please enter the valid Email",
+				remote: "The Email is not Registered !!"
+			},
+			password: {
+				required: "Please provide the password",
+			},
+
+		}
+	});	
+
 	// Password Strength Script
 	$("#myPassword").passtrength({
 		minChars: 4,
 		passwordToggle: true,
 		tooltip: true,
 		eyeImg:'/images/frontend_images/eye.svg'
-	})
+	});
 });
+

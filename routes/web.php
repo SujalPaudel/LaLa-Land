@@ -50,6 +50,8 @@ Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');
 //Check if the user already exists
 Route::match(['get', 'post'], '/check-email', 'UsersController@checkMail');
 
+Route::match(['get', 'post'], '/check-email-for-login', 'UsersController@checkMailForLogin');
+
 Route::group(['middleware' => ['auth']], function(){
   Route::get('/admin/dashboard', 'AdminController@dashboard');
   Route::get('/admin/settings', 'AdminController@settings');
@@ -103,5 +105,7 @@ Route::get('/login-register', 'UsersController@userLoginRegister');
 Route::post('/user-register', 'UsersController@register');
 
 Route::get('/user-logout', 'UsersController@logout');
+
+Route::post('/user-login', 'UsersController@login');
 
 Route::get('/home', 'HomeController@index')->name('home');
