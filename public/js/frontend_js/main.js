@@ -138,6 +138,52 @@ $().ready(function(){
 		}
 	});
 
+	$("#accountForm").validate({
+		rules:{
+			name:{
+				required:true,
+				minlength:2,
+				accept: "[a-zA-Z]+"
+			},
+			address:{
+				required:true
+			},
+			city:{
+				required:true
+			},
+			khalti_number:{
+				required:true
+			},
+			mobile:{
+				required:true,
+				number: true
+			}							
+		},
+		messages:{
+			name:{
+				required:"Please Enter your Name",
+				minlength: "Name must be atleast 2 characters long",
+				accept: "Your Name must contain letters only"
+			},
+			address: {
+				required: "Please provide the address",
+			},
+			city: {
+				required: "Please provide the address",
+			},
+			khalti_number: {
+				required: "Please provide the khalti number"
+			},
+			mobile: {
+				required: "Please provide the mobile number",
+				number: "Please provide the number"
+			}
+
+		}
+	});
+
+
+
 	$("#loginForm").validate({
 		rules:{
 			email:{

@@ -22,17 +22,16 @@
         <div class="col-sm-4 col-sm-offset-1">
           <div class="login-form"><!--login form-->
             <h2>Update Account</h2>
-              <form id="accountForm" name="accountForm" action="{{url('/account')}}" method = "post" required autocomplete="off">{{ csrf_field() }}
+              <form id="accountForm" name="accountForm" action="{{url('/account')}}" method = "post" autocomplete="off">{{ csrf_field() }}
                 <input name = "name" id = "name" type="text" placeholder="Name" value = "{{$userDetails->name}}"/>
                 <input name = "address" id = "address" type="text" placeholder="Address" value = "{{$userDetails->address}}" />
                 <input name = "city" id = "city" type="text" placeholder="City" value = "{{$userDetails->city}}" />
                 <select id = "state" name = "state" style="margin-bottom: 1rem; padding:1rem; display: inline-block;">
                 @foreach($states as $state)
-                  <option value = "{{$state->state_name}}">{{$state->state_name}}</option>
+                  <option value = "{{$state->state_name}}" @if($state->state_name == $userDetails->state) selected @endif>{{$state->state_name}}</option>
                 @endforeach
                 </select>
                 <input name = "khalti_number" id = "khalti_number" type="text" placeholder="Khalti Number" value = "{{$userDetails->khalti_number}}"/>
-                <input name = "mobile" id = "mobile" type="text" placeholder="Mobile" value = "{{$userDetails->mobile}}"/>
                 <input name = "mobile" id = "mobile" type="text" placeholder="Mobile" value = "{{$userDetails->mobile}}"/>
                 <button type="submit" class="btn btn-default">Signup</button>
               </form>            

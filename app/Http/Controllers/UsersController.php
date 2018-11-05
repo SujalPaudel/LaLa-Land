@@ -59,13 +59,24 @@ class UsersController extends Controller
       }
     }
 
-    public function account(){
+    public function account(Request $request){
       $user_id = Auth::user()->id;
-      $userDetails = User::where('id', $user_id)->get();
-      echo $userDetails;die;
+      $userDetails = User::find($user_id);
       $states = State::get();
-      // $states = json_decode(json_encode($states));
-      // echo "<pre>";$state;print_r($state);die;
+
+      if($request->isMethod('post')){
+        $data = $request->all();
+        // echo "<pre>";print_r($data);die;
+        $user = User::find($user_id);
+        $user->name = $data['name'];
+        $user->address = $data['address'];
+        $user->city = $data['city'];
+        $user->state = $data['state'];
+        $user->khalti_number = $data['khalti_number'];
+        $user->mobile = $data['mobile'];
+        $user->save();
+        return redirect()->back()->with('flash_message_success', 'Your Account Credentials has been Updated !!');
+      }
       return view('users.account')->with(compact('states', 'userDetails'));
     }    
 
