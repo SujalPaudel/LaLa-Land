@@ -182,6 +182,29 @@ $().ready(function(){
 		}
 	});
 
+	// Check current user password
+
+	$("#current_pwd").keyup(function(){
+		var current_pwd= $(this).val();
+		$.ajax({
+		  headers: {
+		    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		  },			
+			type: 'post',
+			url: '/check-current-pwd',
+			data: {current_pwd:current_pwd},
+			success:function(resp){
+				if(jQuery.trim(resp) === "false"){
+					$("#chkPwd").html("<font color = 'red'>Current Password is Incorrect</font>")
+				}else if(jQuery.trim(resp) === "true"){
+					$("#chkPwd").html("<font color = 'green'>Current Password is Correct</font>")
+				}
+			},
+			error:function(){
+				alert("Error");
+			}
+		})
+	});
 
 
 	$("#loginForm").validate({
@@ -207,6 +230,36 @@ $().ready(function(){
 
 		}
 	});	
+
+	$("#passwordForm").validate({
+	rules:{
+		new_pwd:{
+			required:true,
+			minlength:6,
+			maxlength:20
+			},
+		confirm_pwd:{
+			required:true,
+			minlength:6,
+			maxlength:20,
+			equalTo: "#new_pwd"			
+		}
+	},
+	messages:{
+		new_pwd:{
+			required: "New Password is required",
+			minlength: "Atleast 6 characters",
+			maxlength: "Atmost 6 characters!!"
+		},
+		confirm_pwd:{
+			required: "New Password is required",
+			minlength: "Atleast 6 characters",
+			maxlength: "Atmost 6 characters!!",
+			equalTo: "This doesn't match with the New Password!!"
+		},
+
+	}
+});
 
 	// Password Strength Script
 	$("#myPassword").passtrength({

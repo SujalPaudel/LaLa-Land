@@ -53,8 +53,14 @@ Route::match(['get', 'post'], '/check-email', 'UsersController@checkMail');
 Route::match(['get', 'post'], '/check-email-for-login', 'UsersController@checkMailForLogin');
 
 // The grouped routes are protected by the middleware
+// All routes after being logged in
+
 Route::group(['middleware' => ['frontLogin']], function(){
   Route::match(['get', 'post'], '/account', 'UsersController@account'); // use the middleware in this route.
+
+  Route::post('/check-current-pwd', 'UsersController@checkCurrentPassword');
+
+  Route::post('/update-user-pwd', 'UsersController@UpdateUserPassword');
 });
 
 Route::group(['middleware' => ['auth']], function(){

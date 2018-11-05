@@ -22,7 +22,7 @@
         <div class="col-sm-4 col-sm-offset-1">
           <div class="login-form"><!--login form-->
             <h2>Update Account</h2>
-              <form id="accountForm" name="accountForm" action="{{url('/account')}}" method = "post" autocomplete="off">{{ csrf_field() }}
+              <form id="accountForm" name="accountForm" action="{{url('/account')}}" method = "post" autocomplete="off">{{ @csrf_field() }}
                 <input name = "name" id = "name" type="text" placeholder="Name" value = "{{$userDetails->name}}"/>
                 <input name = "address" id = "address" type="text" placeholder="Address" value = "{{$userDetails->address}}" />
                 <input name = "city" id = "city" type="text" placeholder="City" value = "{{$userDetails->city}}" />
@@ -45,6 +45,13 @@
         <div class="col-sm-4">
           <div class="signup-form"><!--sign up form-->
             <h2>Update Password</h2>
+              <form id = "passwordForm" name = "passwordForm" action = "{{url('/update-user-pwd')}}" method = "POST">{{ csrf_field() }}
+                <input type = "password" name = "current_pwd" id = "current_pwd" placeholder="Current Password">
+                <span id = "chkPwd"></span>
+                <input type = "password" name = "new_pwd" id = "new_pwd" placeholder="New Password">
+                <input type = "password" name = "confirm_pwd" id = "confirm_pwd" placeholder="Confirm Password">
+                <button type = "submit" class = "btn btn-default">Submit</button>
+              </form>
           </div><!--/sign up form-->
         </div>
       </div>

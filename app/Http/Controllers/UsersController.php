@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Session;
 use App\State;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -37,6 +38,18 @@ class UsersController extends Controller
           }
         }
       }            
+    }
+
+    public function checkCurrentPassword(Request $request){
+      $data = $request->all();
+      $current_password = $data['current_pwd'];
+      $user_id = Auth::User()->id;
+      $check_password = User::where('id', $user_id)->first();
+      if(Hash::check($current_password, $check_password->password)){
+        echo "true";die;
+      }else{
+        echo "false";die;
+      }
     }
 
     public function checkMail(Request $request){
@@ -97,5 +110,21 @@ class UsersController extends Controller
           return redirect()->back()->with('flash_message_error', 'The credentials are invalid');
         }
      }
+  }
+
+  public function UpdateUserPassword(Request $request){
+    if($request->isMethod('post')){
+      $data = $request->all();
+      $userDetails = User::where('id', Auth::User()->id)->first();
+    
+      $currentPassword = $data['current_pwd'];
+      if(Hash::check($currentPassword, $userDetails->password )){
+        $newPassword = bcrypt($data['new_pwd']);
+        User::where('id', Auth::User()->id)->update(['password'=>$newPassword]);
+        return redirect()->back()->with('flash_message_success', 'Congratulations, the Password is Updated !!');
+      }else{
+        return redirect()->back()->with('flash_message_error', 'Current Password is Incorrect !!');
+      }
+    }
   }
 }
