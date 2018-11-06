@@ -10,16 +10,16 @@
           <h2>Bill To</h2>
         <form action="#">
           <div class = "form-group">
-            <input type="text" placeholder="Billing Name" class="form-control" />
+            <input type="text" id = "billing_name" name = "billing_name" placeholder="Billing Name" class="form-control"  value = {{$userDetails->name}} />
           </div>
           <div class = "form-group">
-            <input type="text" placeholder="Billing Address" class="form-control" />
+            <input type="text" id = "billing_address" name = "billing_address" placeholder="Billing Address" class="form-control"  value = {{$userDetails->address}} />
           </div>
           <div class = "form-group">
-            <input type="text" placeholder="Billing City" class="form-control" />
+            <input type="text" id = "billing_city" name = "billing_city" placeholder="Billing City" class="form-control"  value = {{$userDetails->city}} />
           </div>
           <div class = "form-group">
-            <input type="email" placeholder="Billing Mobile Number" class="form-control"/>
+            <input type="email" id = "billing_mobile" name = "billing_mobile" placeholder="Billing Mobile Number" class="form-control" value = {{$userDetails->mobile}} />
           </div>
           <div class = "form-check">
             <input type = "checkbox" class = "form-check-input" id = "billtoship">
