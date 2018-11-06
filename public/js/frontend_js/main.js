@@ -268,5 +268,18 @@ $().ready(function(){
 		tooltip: true,
 		eyeImg:'/images/frontend_images/eye.svg'
 	});
-});
 
+	$("#billtoship").on('click', function(){
+		if(this.checked){
+			$("#shipping_name").val($("#billing_name").val());
+			$("#shipping_address").val($("#billing_address").val());
+			$("#shipping_city").val($("#billing_city").val());
+			$("#shipping_mobile").val($("#billing_mobile").val());
+		}else{
+			$("#shipping_name").val('');
+			$("#shipping_address").val('');
+			$("#shipping_city").val('');
+			$("#shipping_mobile").val('');			
+		}
+	})
+});

@@ -19,7 +19,7 @@
             <input type="text" id = "billing_city" name = "billing_city" placeholder="Billing City" class="form-control"  value = {{$userDetails->city}} />
           </div>
           <div class = "form-group">
-            <input type="email" id = "billing_mobile" name = "billing_mobile" placeholder="Billing Mobile Number" class="form-control" value = {{$userDetails->mobile}} />
+            <input type="tel" id = "billing_mobile" name = "billing_mobile" placeholder="Billing Mobile Number" class="form-control" value = {{$userDetails->mobile}} />
           </div>
           <div class = "form-check">
             <input type = "checkbox" class = "form-check-input" id = "billtoship">
@@ -33,16 +33,16 @@
         <div class="signup-form form-group"><!--sign up form-->
           <h2>Deliever To</h2>
           <div class = "form-group">          
-            <input type="text" placeholder="Shipping Name" class="form-control"/>
+            <input type="text" id = "shipping_name" placeholder="Shipping Name" class="form-control"/>
           </div>
           <div class = "form-group">          
-            <input type="email" placeholder="Shipping Address" class="form-control"/>
+            <input type="text" id = "shipping_address" placeholder="Shipping Address" class="form-control"/>
           </div>
           <div class = "form-group">          
-            <input type="password" placeholder="Shipping City" class="form-control"/>
+            <input type="text" id = "shipping_city" placeholder="Shipping City" class="form-control"/>
           </div>
           <div class = "form-group">          
-            <input type="email" placeholder="Shipping Mobile Number" class="form-control"/>  
+            <input type="tel" id = "shipping_mobile" placeholder="Shipping Mobile Number" class="form-control"/>  
           </div>   
 
             <button type="submit" class="btn btn-success">CheckOut</button>
