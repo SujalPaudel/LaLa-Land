@@ -573,8 +573,16 @@ class ProductsController extends Controller
         $deliver->mobile = $data['shipping_mobile'];
         $deliver->save();
       }
-      echo "Redirect to the order review page";die;
+      return redirect()->action('ProductsController@orderReview');
     }
     return view('products.checkout')->with(compact('userDetails', 'shippingDetails'));
+  }
+
+  public function orderReview(){
+    $user_id = Auth::user()->id;
+    $user_email = Auth::user()->email;
+    $userDetails = User::where('id', $user_id)->first();
+    $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
+    return view('products.order_review')->with(compact('userDetails','shippingDetails'));
   }
 }

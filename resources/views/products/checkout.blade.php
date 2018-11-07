@@ -2,10 +2,15 @@
 @section('content')
 
 <section id="form" style = "margin-top: 20px;"><!--form-->
-
-@include('repetition_alert');
-
   <div class="container">
+  <div class = "breadcrumbs">
+    <ol class = "breadcrumb">
+      <li><a href = "#">Home</a></li>
+      <li class = "active">Check Out</a></li>
+    </ol>
+  </div>
+  @include('repetition_alert');
+
   <form action = "{{url('/checkout')}}" method = "post"> {{csrf_field()}}
     <div class="row">
       <div class="col-sm-4 col-sm-offset-1">
