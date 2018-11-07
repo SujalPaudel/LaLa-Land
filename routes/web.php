@@ -17,7 +17,7 @@ Route::get('/', 'IndexController@index');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 

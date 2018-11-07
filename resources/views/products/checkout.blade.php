@@ -48,7 +48,7 @@
             <input type="text" id = "shipping_city" name = "shipping_city" placeholder="Shipping City" value = "{{$shippingDetails->city}}" class="form-control"/>
           </div>
           <div class = "form-group">
-            <input type="text" id = "shipping_khalti" name = "shipping_khalti" placeholder="Shipping Khalti number" value = "{{$shippingDetails->khalti_number}}" class="form-control" />
+            <input type="text" id = "shipping_khalti" name = "shipping_khalti" placeholder="Paying Khalti number" value = "{{$shippingDetails->khalti_number}}" class="form-control" />
           </div>           
           <div class = "form-group">          
             <input type="tel" id = "shipping_mobile" name = "shipping_mobile" placeholder="Shipping Mobile Number" value = "{{$shippingDetails->  mobile}}" class="form-control"/>  

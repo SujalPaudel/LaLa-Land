@@ -525,6 +525,12 @@ class ProductsController extends Controller
       $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
     }
 
+    // get the session id of the current user
+
+    $session_id = Session::get('session_id');
+    DB::table('cart')->where('session_id', $session_id)->update(['user_email'=>$user_email]);
+
+
     if($request->isMethod('post')){
       $data = $request->all();
       if(empty($data['billing_name']) ||
