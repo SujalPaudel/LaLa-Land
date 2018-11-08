@@ -591,10 +591,10 @@ class ProductsController extends Controller
 
     foreach($userCart as $key => $product){
       $productDetails = Products::where('id',$product->product_id)->first();
-      $ramlal = $userCart[$key]->image;
-      $ramlal = $productDetails->image;
+      $ramlalreview = $userCart[$key]->image;
+      $ramlal_review = $productDetails->image;
     }
     // echo "<pre>";print_r($userCart);die;
-    return view('products.order_review')->with(compact('userDetails','shippingDetails'));
+    return view('products.order_review')->with(compact('userDetails','shippingDetails', 'userCart'));
   }
 }
