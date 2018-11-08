@@ -520,6 +520,7 @@ class ProductsController extends Controller
     $user_id = Auth::user()->id;
     $user_email = Auth::user()->email;
     $userDetails = User::find($user_id);
+    $shippingDetails = array();
 
     // Check if the delevering address exists
     $shippingCount = DeliveryAddress::where('user_id', $user_id)->count();
