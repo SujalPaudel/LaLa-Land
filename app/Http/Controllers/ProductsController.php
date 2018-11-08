@@ -349,6 +349,7 @@ class ProductsController extends Controller
    }
     $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
     // $productDetails = json_decode(json_encode($productDetails));
+    // echo "<pre>";print_r($productDetails);die;
     // echo "<pre>";print_r($productDetails->attributes);die;
 
     $relatedProducts = Products::where('id','!=',$id)->where(['category_id'=>$productDetails->category_id])->get();
@@ -421,6 +422,7 @@ class ProductsController extends Controller
                                      'size'=>$sizeArr[1],
                                      'quantity'=>$data['quantity'],
                                      'user_email'=>$data['user_email'],
+                                      'image'=>$data['product_image'],
                                      'session_id'=>$session_id]);
      
     }
@@ -581,8 +583,18 @@ class ProductsController extends Controller
   public function orderReview(){
     $user_id = Auth::user()->id;
     $user_email = Auth::user()->email;
+    $session_id = Session::get('session_id');
     $userDetails = User::where('id', $user_id)->first();
     $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
+    $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+    // echo "<pre>";print_r($userCart);
+
+    foreach($userCart as $key => $product){
+      $productDetails = Products::where('id',$product->product_id)->first();
+      $ramlal = $userCart[$key]->image;
+      $ramlal = $productDetails->image;
+    }
+    // echo "<pre>";print_r($userCart);die;
     return view('products.order_review')->with(compact('userDetails','shippingDetails'));
   }
 }

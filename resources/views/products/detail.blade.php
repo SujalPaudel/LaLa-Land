@@ -44,6 +44,7 @@
 							<input type = "hidden" name = "product_code" value = "{{$productDetails->product_code}}">
 							<input type = "hidden" name = "product_color" value = "{{$productDetails->product_color}}">
 							<input type = "hidden" name = "product_price" id = "price" value = "{{$productDetails->price}}">
+							<input type = "hidden" name = "product_image" value = "{{$productDetails->image}}">
 						<div class="product-information"><!--/product-information-->
 							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 							<h2>{{$productDetails->product_name}}</h2>
