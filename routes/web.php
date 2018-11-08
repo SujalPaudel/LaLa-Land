@@ -66,6 +66,7 @@ Route::group(['middleware' => ['frontLogin']], function(){
   
   Route::match(['get', 'post'], '/order-review', 'ProductsController@orderReview');
 
+  Route::match(['get', 'post'], '/place-order', 'ProductsController@placeOrder');
 
 });
 
