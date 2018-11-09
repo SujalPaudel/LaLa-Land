@@ -13,6 +13,7 @@ use App\Coupon;
 use App\User;
 use App\DeliveryAddress;
 use App\Order;
+use App\OrdersProduct;
 use Image;
 use DB;
 use Session;
@@ -615,6 +616,7 @@ class ProductsController extends Controller
 
       // Get the shipping address from Delivery Address table
 
+      $session_id = Session::get('session_id');
 
       $deliverDetails = DeliveryAddress::where('user_id', $user_id)->first();
       if(empty(Session::get('CouponCode'))){
@@ -637,6 +639,23 @@ class ProductsController extends Controller
       $order->payment_method = $data['payment_method'];
       $order->grand_total = $data['grand_total'];
       $order->save();
+
+      $order_id = DB::getPdo()->lastInsertId();
+
+      $cartProducts = DB::table('cart')->where('session_id', $session_id)->get();
+      foreach($cartProducts as $pro){
+        $cartPro = new OrdersProduct;
+        $cartPro->order_id = $order_id;
+        $cartPro->user_id = $user_id;
+        $cartPro->product_id = $pro->product_id;
+        $cartPro->product_code = $pro->product_code;
+        $cartPro->product_name = $pro->product_name;
+        $cartPro->product_size = $pro->size;
+        $cartPro->product_color = $pro->product_color;
+        $cartPro->product_price = $pro->price;
+        $cartPro->product_qty = $pro->quantity;
+        $cartPro->save();
+      }
 
 
     }
