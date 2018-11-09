@@ -135,6 +135,8 @@
       </div>
       <form class = "paymentForm" id = "paymentForm" action = "{{url('/place-order')}}" method = "post"> {{csrf_field()}}
       <input type = "hidden" name = "grand_total" value = "{{$grand_total}}" />
+      <input type = "hidden" name = "couponAmount" @if(!empty(Session::get('CouponAmount'))) value = "{{Session::get('CouponAmount')}}" @else value = "0" @endif />
+      <input type = "hidden" name = "CouponCode"/>
         <div class="payment-options">
             <span>
               <label><strong>Select Payment Method</strong></label>

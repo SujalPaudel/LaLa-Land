@@ -12,6 +12,7 @@ use App\ProductsImage;
 use App\Coupon;
 use App\User;
 use App\DeliveryAddress;
+use App\Order;
 use Image;
 use DB;
 use Session;
@@ -505,6 +506,7 @@ class ProductsController extends Controller
       if($couponDetails->amount_type == "Fixed"){
         $couponAmount = $couponDetails->amount;
       }else{
+        // echo $totalAmount;die;
         $couponAmount = $totalAmount * ($couponDetails->amount/100);
       }
 
@@ -602,7 +604,41 @@ class ProductsController extends Controller
   public function placeOrder(Request $request){
     if($request->isMethod('post')){
       $data = $request->all();
-      echo "<pre>";print_r($data);die;
+      $user_id = Auth::user()->id;
+      $user_email = Auth::user()->email;
+      // echo "<pre>";print_r($data);die;
+      // if(empty(Session::get('couponAmount'))){
+      //   $couponAmount = "";
+      // }else{
+      //   $couponAmount = Session::get('CouponAmount');
+      // }
+
+      // Get the shipping address from Delivery Address table
+
+
+      $deliverDetails = DeliveryAddress::where('user_id', $user_id)->first();
+      if(empty(Session::get('CouponCode'))){
+        $couponCode = "0";
+      }else{
+        $couponCode = Session::get('CouponCode');
+      }
+
+      $order = new Order;
+      $order->user_id = $user_id;
+      $order->user_email = $user_email;
+      $order->name = $deliverDetails->name;
+      $order->address = $deliverDetails->address;
+      $order->city = $deliverDetails->city;
+      $order->khalti_number = $deliverDetails->khalti_number;
+      $order->mobile = $deliverDetails->mobile;
+      $order->coupon_code = $couponCode;
+      $order->coupon_amount = $data['couponAmount'];
+      $order->order_status = "New";
+      $order->payment_method = $data['payment_method'];
+      $order->grand_total = $data['grand_total'];
+      $order->save();
+
+
     }
   }
 }
