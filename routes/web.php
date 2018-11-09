@@ -68,6 +68,8 @@ Route::group(['middleware' => ['frontLogin']], function(){
 
   Route::match(['get', 'post'], '/place-order', 'ProductsController@placeOrder');
 
+  Route::get('/thanks', 'ProductsController@thanks');
+
 });
 
 Route::group(['middleware' => ['auth']], function(){
@@ -127,5 +129,6 @@ Route::get('/user-logout', 'UsersController@logout');
 Route::post('/user-login', 'UsersController@login');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 
