@@ -56,11 +56,18 @@
 								@endforeach
 							</select>
 							<span>
-								<span id = "getPrice">Rs {{$productDetails->price}}</span>
-								<label>Quantity:</label>
-								<input type="text" name = "quantity" value="3" />
+								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}</span>
+								<label>Pins:</label>
+								<button class = "btn btn-default" type = "button" id = "decrease" style="    margin-right: -3px;
+    margin-top: -7px;">-</button>
+								<input type="text" id = "pins" name = "quantity" value="1" /><br><button class = "btn btn-default" type = "button" id = "increase"
+																																												 style="float: right;	margin-top: -3.4rem;
+																																				    							margin-left: -1.4rem">+</button>
+
 								@if($total_stock > 0)
-									<button type="submit" class="btn btn-default cart" id = "cartButton">
+									<button type="submit" class="btn btn-default cart" id = "cartButton" style = "margin-bottom: 30px;
+    margin-left: 20px;
+    margin-top: 2rem;">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -86,7 +93,7 @@
 					<div class="tab-content">
 						<div class="tab-pane active in" id="description">
 							<div class = "col-sm-12">
-								<p>{{$productDetails->product_name}}</p>
+								<p>{{$productDetails->description}}</p>
 							</div>
 						</div>
 						

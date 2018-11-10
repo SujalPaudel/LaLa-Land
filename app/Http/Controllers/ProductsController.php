@@ -403,7 +403,9 @@ class ProductsController extends Controller
 
 
     $sizeArr = explode("-", $request->choices);
-
+    if(!isset($sizeArr[1])){
+      return redirect()->back()->with('flash_message_error', 'Please Select the Category of ');
+    }
     $countProducts = DB::table('cart')->where(['product_id'=>$data['product_id'],
                                                'product_color'=>$data['product_color'],
                                                'size'=>$sizeArr[1],

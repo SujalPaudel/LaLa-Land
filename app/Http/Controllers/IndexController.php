@@ -15,9 +15,11 @@ class IndexController extends Controller
       // $productsAll = Products::get();
 
       // In descending order
-      $productsAll = Products::orderBy('id', 'DESC')->where('status',1)->get();
-      $dumpValue = json_decode(json_encode($productsAll));
-      dump($dumpValue);
+      $productsAll = Products::orderBy('id', 'DESC')->where('status',1)->get(); 
+      // $productsAll = json_decode(json_encode($productsAll));
+      // echo "<pre>";print_r($productsAll);die;
+      // $dumpValue = json_decode(json_encode($productsAll));
+      // dump($dumpValue);
       // In random order
       // $productsAll = Products::inRandomOrder()->get();
 

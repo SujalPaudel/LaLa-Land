@@ -72,7 +72,7 @@
                   <th>Image</th>
                   <th>Actions</th>
                 </tr>
-                @foreach($productsImages as $image)
+                  @foreach($productsImages as $image)
                 <tr>
                   <td>{{$image->id}}</td>
                   <td>{{$image->product_id}}</td>

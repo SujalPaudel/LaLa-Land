@@ -284,6 +284,18 @@ $().ready(function(){
 			$("#shipping_mobile").val('');			
 		}
 	})
+
+	$("#increase").on('click', function(){
+		$("#pins").val(parseInt($("#pins").val(), 10) + 1);
+	})
+
+	$("#decrease").on('click', function(){
+		var currentVal = $("#pins").val();		
+		if(currentVal > 1){
+			$("#pins").val(parseInt($("#pins").val(), 10) - 1);
+	}
+	})
+
 });
 
 function selectPaymentMethod(){

@@ -97,9 +97,9 @@
                         <img src="{{asset('images/backend_images/products/small_images/'.$product->image)}}" alt="" />
                         <h2>Rs {{ $product->price }}</h2>
                         <p>{{$product->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="{{url('/product/'.$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pin to cart</a>
                       </div>
-                      <div class="product-overlay">
+<!--                       <div class="product-overlay">
                         <div class="overlay-content">
                         <img src="{{asset('images/backend_images/products/small_images/'.$product->image)}}" alt="" />
 
@@ -107,21 +107,21 @@
                           <p>{{$product->product_name}}</p>
                           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
-                      </div>
+                      </div> -->
                   </div>
-                  <div class="choose">
+                 <!--  <div class="choose">
                     <ul class="nav nav-pills nav-justified">
                       <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
                       <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                     </ul>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             @endforeach
             
           </div><!--features_items-->
           
-          <div class="category-tab"><!--category-tab-->
+  <!--         <div class="category-tab">
             <div class="col-sm-12 ">
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
@@ -407,9 +407,9 @@
                 </div>
               </div>
             </div>
-          </div><!--/category-tab-->
+          </div>
           
-          <div class="recommended_items"><!--recommended_items-->
+          <div class="recommended_items">
             <h2 class="title text-center">recommended items</h2>
             
             <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -504,7 +504,7 @@
                 <i class="fa fa-angle-right"></i>
                 </a>      
             </div>
-          </div><!--/recommended_items-->
+          </div> -->
           
         </div>
       </div>
