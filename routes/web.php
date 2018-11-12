@@ -17,7 +17,7 @@ Route::get('/', 'IndexController@index');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-Auth::routes(['verify'=>true]);
+// Auth::routes(['verify'=>true]);
 
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 
@@ -122,13 +122,12 @@ Route::get('/login-register', 'UsersController@userLoginRegister');
 
 // Post the users registration credentials
 
-Route::post('/user-register', 'UsersController@register');
+Route::post('/user-register', 'UsersController@register')->middleware('verified');  
 
 Route::get('/user-logout', 'UsersController@logout');
 
 Route::post('/user-login', 'UsersController@login');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 

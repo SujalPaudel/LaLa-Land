@@ -353,6 +353,13 @@ class ProductsController extends Controller
     // $productDetails = json_decode(json_encode($productDetails));
     // echo "<pre>";print_r($productDetails);die;
     // echo "<pre>";print_r($productDetails->attributes);die;
+    $totalPins = OrdersProduct::where('product_id', $id)->get();
+    // $totalPins = json_decode(json_encode($totalPins));    
+    // echo "<pre>";print_r($totalPins);
+    $totalPinsAmt = 0;
+    foreach ($totalPins as $key => $value) {
+      $totalPinsAmt = $totalPinsAmt + $value->product_qty;
+    }
 
     $relatedProducts = Products::where('id','!=',$id)->where(['category_id'=>$productDetails->category_id])->get();
     // $relatedProducts = json_decode(json_encode($relatedProducts));
@@ -364,7 +371,7 @@ class ProductsController extends Controller
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
 
     $total_stock = ProductAttribute::where('product_id', $id)->sum('stock');
-    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts'));
+    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts', 'totalPinsAmt'));
   }
 
   public function getProductPrice(Request $request){

@@ -296,6 +296,11 @@ $().ready(function(){
 	}
 	})
 
+
+
+
+	
+
 });
 
 function selectPaymentMethod(){

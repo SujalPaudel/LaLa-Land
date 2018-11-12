@@ -56,20 +56,20 @@
 								@endforeach
 							</select>
 							<span>
-								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}</span>
+								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}<br><em style="font-size: 1.5rem;">(Max Price)</em></span><br>
+								<span></span>
 								<label>Pins:</label>
-								<button class = "btn btn-default" type = "button" id = "decrease" style="    margin-right: -3px;
-    margin-top: -7px;">-</button>
-								<input type="text" id = "pins" name = "quantity" value="1" /><br><button class = "btn btn-default" type = "button" id = "increase"
-																																												 style="float: right;	margin-top: -3.4rem;
-																																				    							margin-left: -1.4rem">+</button>
+								<button class = "btn btn-default decrease-pins" type = "button" id = "decrease">-</button>
+								<input type="text" id = "pins" name = "quantity" value="1" readonly />
+								<br>
+								<button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>
+								<!-- <input type="text" id = "pins1" name = "quantity" value="5" readonly /> -->
+								<span id = "chkPins" style="font-size: 8px;"></span>
 
 								@if($total_stock > 0)
-									<button type="submit" class="btn btn-default cart" id = "cartButton" style = "margin-bottom: 30px;
-    margin-left: 20px;
-    margin-top: 2rem;">
+									<button type="submit" class="btn btn-default cart custom-cart" id = "cartButton">
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
+										Pin to cart
 									</button>
 								@endif
 
@@ -77,7 +77,16 @@
 							<p><b>Availability:</b><span id = "avaibility">@if($total_stock>0) In Stock @else Out of Stock(The pin is full) @endif</span></p>
 							<p><b>Condition:</b> New</p>
 							<p><b>Brand:</b> E-SHOPPER</p>
-							<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+						
+								<div class = "card" style="float: right;">
+									<pre style="line-height: 0.8rem;">
+									<li>Wholesale Starts From: {{$productDetails->starts_at}}</li>
+									<li>Decrease in price after 6 pins: {{$productDetails->percentageDiscount}} of {{$productDetails->price}}</li>
+									<li >Current Pins:  {{$totalPinsAmt}} pins</li>
+									</pre>
+								</div>
+
+							</pre>
 						</div><!--/product-information-->
 					</div>
 				</div><!--/product-details-->

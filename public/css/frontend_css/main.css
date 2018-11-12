@@ -1645,7 +1645,7 @@ h2.title {
 
 .cart_quantity_input {
   color: #696763;
-  float: left;
+  /*float: left;*/
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
@@ -2518,6 +2518,38 @@ h2.title {
 
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
+}
+
+
+/* Custom Made CSS */
+
+.cart-pins-minus{
+  margin-right: -3.5px;
+  padding-top: 3px;
+  margin-bottom: 2.5px;
+}
+
+.cart-pins-plus{
+  margin-left: -3.5px;
+  padding-top: 3px; 
+  margin-bottom: 2.5px;
+}
+
+.decrease-pins{
+  margin-right: -3px;
+  margin-top: -7px;
+}
+
+.increase-pins{
+  float: right;
+  margin-top: -3.4rem;
+  margin-left: -1.4rem
+}
+
+.custom-cart{
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-top: 2rem;
 }
 
 

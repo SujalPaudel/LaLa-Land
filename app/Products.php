@@ -10,4 +10,5 @@ class Products extends Model
     return $this->hasMany('App\ProductAttribute', 'product_id'); // one product has many attributes
                                                                   // the foreign_key
   }
+
 }

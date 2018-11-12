@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use App\State;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -24,11 +25,13 @@ class UsersController extends Controller
         if($usersCount>0){
           return redirect()->back()->with('flash_message_error', 'The user with this Email already exists!!');
         }else{
-          $users = new User;
-          $users->name = $data['name'];
-          $users->email = $data['email'];
-          $users->password = bcrypt($data['password']);
-          $users->save();
+            $users = new User;
+            $users->name = $data['name'];
+            $users->email = $data['email'];
+            $users->password = bcrypt($data['password']);
+            $users->save();
+            }
+
           // return redirect()->back()->with('flash_message_success', 'You have been successfully registered');
           
           // After the above operation is performed the next job is to login the user simultaneously
@@ -37,8 +40,9 @@ class UsersController extends Controller
             return redirect('/cart');
           }
         }
-      }            
-    }
+        }
+                  
+
 
     public function checkCurrentPassword(Request $request){
       $data = $request->all();

@@ -31,7 +31,7 @@
               <td class="image">Item</td>
               <td class="description"></td>
               <td class="price">Price</td>
-              <td class="quantity">Quantity</td>
+              <td class="quantity">Pins</td>
               <td class="total">Total</td>
               <td></td>
             </tr>
@@ -52,11 +52,10 @@
               </td>
               <td class="cart_quantity">
                 <div class="cart_quantity_button">
-                  <a class="cart_quantity_up" href="{{url('/cart/update-quantity/'.$cart->id.'/1')}}"> + </a>
-                  <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->quantity}}" autocomplete="off" size="2">
-                  @if($cart->quantity>1)
-                   <a class="cart_quantity_down" href=""> - </a>
-                  @endif
+                  <button class="btn btn-default cart-pins-minus" id = "decrease"> - </button>
+                  <input class="cart_quantity_input" type="text" name="quantity" id = "pins" value="{{$cart->quantity}}" autocomplete="off" size = "2" readonly>                  
+                  <button class = "btn btn-default cart-pins-plus" id = "increase">+</button>                   
+                  
                 </div>
               </td>
               <td class="cart_total">
