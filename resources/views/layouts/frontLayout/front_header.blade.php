@@ -1,7 +1,14 @@
 <?php
 use App\Http\Controllers\Controller;
+use App\Category;
+
 $mainCategories = Controller::mainCategories();
-// echo "<pre>";print_r($mainCategories);die;
+$categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
+
+
+// $sub_categories = Category::where(['parent_id'=>$cat->id])->get();
+
+
 ?>
 
   <header id="header"><!--header-->
@@ -41,30 +48,9 @@ $mainCategories = Controller::mainCategories();
             <div class="logo pull-left">
               <a href="{{url('/')}}"><img src="{{asset('images/frontend_images/home/logo.png')}}" alt="" /></a>
             </div>
-<!--             <div class="btn-group pull-right">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                  USA
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Canada</a></li>
-                  <li><a href="#">UK</a></li>
-                </ul>
-              </div>
-              
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                  DOLLAR
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Canadian Dollar</a></li>
-                  <li><a href="#">Pound</a></li>
-                </ul>
-              </div>
-            </div> -->
           </div>
+
+
           <div class="col-sm-8">
             <div class="shop-menu pull-right">
               <ul class="nav navbar-nav">
@@ -96,28 +82,26 @@ $mainCategories = Controller::mainCategories();
                 <span class="icon-bar"></span>
               </button>
             </div>
+
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
-                <li><a href="{{url('/')}}" class="active">Home</a></li>
-                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                    <ul role="menu" class="sub-menu">
-                      @foreach($mainCategories as $maincat)
-                        @if($maincat->status == '1')
-                          <li><a href="{{url('/category/'.$maincat->url)}}">{{$maincat->name}}</a></li>
-                        @endif
-                      @endforeach
+                @foreach($categories as $cat)
+                  @if($cat->status == '1')
+                    <li><a href="">{{$cat->name}}
+                      <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            
+                        @foreach($cat->subcategories as $subc)
+                          @if($subc->status == '1')
+                            <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
+                          @endif
+                        @endforeach
                       
-                    </ul>
-                  </li> 
-                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-                    <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-                <li><a href="contact-us.html">Contact</a></li>
-              </ul>
+                        </ul>
+                  @endif
+                @endforeach
             </div>
+
           </div>
           <div class="col-sm-3">
             <div class="search_box pull-right">

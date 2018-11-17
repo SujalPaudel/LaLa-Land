@@ -26,6 +26,7 @@ class IndexController extends Controller
       $categories_menu = "";
 
       $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
+
       // $categories = json_decode(json_encode($categories));
       // echo "<pre>";print_r($categories);die;
       foreach($categories as $cat){
@@ -42,12 +43,14 @@ class IndexController extends Controller
                               <div class='panel-body'>
                                 <ul>";
                                 $sub_categories = Category::where(['parent_id'=>$cat->id])->get();
+                                // $sub_categories = json_decode(json_encode($sub_categories))
                                 foreach($sub_categories as $subcat){
                                   $categories_menu .= "<li><a href='".$subcat->url."'>".$subcat->name."</a></li>";
                                 }
                                 $categories_menu .= "</ul>
                               </div>
                             </div>";                     
+
 
 
         }
