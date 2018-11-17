@@ -11,8 +11,11 @@ $mainCategories = Controller::mainCategories();
           <div class="col-sm-6">
             <div class="contactinfo">
               <ul class="nav nav-pills">
-                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                <li><button class = "btn btn-primary"><a>Explore</a></button></li>
+                <li><a>About Us</a></li>
+                <li><a>Store</a></li>
+                <li><a>Our Collections</a></li>
+                <li><a>Meet Us</a></li>
               </ul>
             </div>
           </div>
@@ -38,7 +41,7 @@ $mainCategories = Controller::mainCategories();
             <div class="logo pull-left">
               <a href="{{url('/')}}"><img src="{{asset('images/frontend_images/home/logo.png')}}" alt="" /></a>
             </div>
-            <div class="btn-group pull-right">
+<!--             <div class="btn-group pull-right">
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                   USA
@@ -60,12 +63,12 @@ $mainCategories = Controller::mainCategories();
                   <li><a href="#">Pound</a></li>
                 </ul>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="col-sm-8">
             <div class="shop-menu pull-right">
               <ul class="nav navbar-nav">
-                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                <!-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->
                 <li><a href="{{url('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                 <li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                 @if(Auth::check())
@@ -99,9 +102,9 @@ $mainCategories = Controller::mainCategories();
                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                     <ul role="menu" class="sub-menu">
                       @foreach($mainCategories as $maincat)
-                      @if($maincat->status == '1')
-                        <li><a href="{{$maincat->url}}">{{$maincat->name}}</a></li>
-                      @endif
+                        @if($maincat->status == '1')
+                          <li><a href="{{url('/category/'.$maincat->url)}}">{{$maincat->name}}</a></li>
+                        @endif
                       @endforeach
                       
                     </ul>

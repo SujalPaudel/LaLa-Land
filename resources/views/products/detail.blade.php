@@ -50,14 +50,14 @@
 							<h2>{{$productDetails->product_name}}</h2>
 							<p>Code: {{$productDetails->product_code}}</p>
 							<select id = "selChoice" name = "choices" style = "width:150px;">
-								<option value = "">Select</option>
+								<!-- <option value = "">Select</option> -->
 								@foreach($productDetails->attributes as $choices)
 									<option value = "{{$productDetails->id}}-{{$choices->size}}">{{$choices->size}}</option>
 								@endforeach
 							</select>
 							<span>
-								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}<br><em style="font-size: 1.5rem;">(Max Price)</em></span><br>
-								<span></span>
+								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}</span><br>
+								<em class = "max-price">(Max Price)</em>
 								<label>Pins:</label>
 								<button class = "btn btn-default decrease-pins" type = "button" id = "decrease">-</button>
 								<input type="text" id = "pins" name = "quantity" value="1" readonly />
@@ -74,15 +74,18 @@
 								@endif
 
 							</span>
-							<p><b>Availability:</b><span id = "avaibility">@if($total_stock>0) In Stock @else Out of Stock(The pin is full) @endif</span></p>
+							<!-- <p><b>Availability:</b><span id = "avaibility">@if($total_stock>0) In Stock @else Out of Stock(The pin is full) @endif</span></p>
 							<p><b>Condition:</b> New</p>
-							<p><b>Brand:</b> E-SHOPPER</p>
+							<p><b>Brand:</b> E-SHOPPER</p> -->
 						
 								<div class = "card" style="float: right;">
-									<pre style="line-height: 0.8rem;">
-									<li>Wholesale Starts From: {{$productDetails->starts_at}}</li>
-									<li>Decrease in price after 6 pins: {{$productDetails->percentageDiscount}} of {{$productDetails->price}}</li>
-									<li >Current Pins:  {{$totalPinsAmt}} pins</li>
+									<pre style="line-height: 0.8rem;width:43rem;">
+									<li>Wholesale Starts From: {{$productDetails->starts_at}} pins</li>
+									<li >Current Pins: {{$totalPinsAmt}} pins</li>
+									<li>Reduced price after 6 pins: {{$productDetails->percentageDiscount}}% of {{$productDetails->price}} = Rs {{$discountAmt}}</li>
+									<li>Deduced Price: Rs {{$productDetails->price - $discountAmt}}</li>
+									<li>Deduced Price/pc after {{$productDetails->starts_at}} pins: 5% of {{$productDetails->price - $discountAmt}}</li>
+									</li>
 									</pre>
 								</div>
 

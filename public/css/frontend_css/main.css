@@ -5,9 +5,10 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(https://fonts.googleapis.com/css?family=Mukta:400,300,500,700);
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Mukta', sans-serif;
   background:;
   position: relative;
   font-weight:400px;
@@ -68,7 +69,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: linear-gradient(to right bottom, #55c57a, #7ed56f) repeat scroll 0 0 #F0F0E9;
 }
 
 .contactinfo ul li:first-child{
@@ -1885,7 +1886,7 @@ h2.title {
 
 
 .shopper-info .btn-primary {
-  background: #FE980F;
+  background: #a1c4fd;
   border: 0 none;
   border-radius: 0;
   margin-right: 15px;
@@ -2392,10 +2393,7 @@ h2.title {
 }
 
 .btn.btn-primary {
-  background:#FE980F;
-  border: 0 none;
-  border-radius: 0;
-  margin-top: 16px;
+  background: #a1c4fd;
 }
 
 .blank-arrow {
@@ -2550,6 +2548,13 @@ h2.title {
   margin-bottom: 30px;
   margin-left: 20px;
   margin-top: 2rem;
+}
+
+.max-price{
+  font-size: 1.5rem;
+  position: absolute;
+  left: 7.5rem;
+  top: 17rem;
 }
 
 

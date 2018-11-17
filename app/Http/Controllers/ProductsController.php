@@ -322,21 +322,35 @@ class ProductsController extends Controller
         abort(404);
       }
       $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
+      $categories = json_decode(json_encode($categories));      
+      // echo "<pre>"; print_r($categories);
+
       $categoryDetails = Category::where(['url'=>$url])->first();  
+      $categoryDetails = json_decode(json_encode($categoryDetails)); 
+      // echo "<pre>"; print_r($categoryDetails);die;
 
       if($categoryDetails->parent_id==0){
+        // if the url is main category
+
         $subCategories = Category::where(['parent_id'=>$categoryDetails->id])->get();
-        $cat_ids[] = "";
+        // $subCategories = json_decode(json_encode($subCategories));
+        // echo "<pre>"; print_r($subCategories);die
+
+       
         foreach($subCategories as $subcat){
-          $cat_ids[]= $subcat->id;
+          $cat_ids[]= $subcat->id; // sub_cat_id
+          // echo "<pre>"; print_r($cat_ids);die;     
         }
- 
+        // $cat_ids[] = $categoryDetails->id;
+
         $productsAll = Products::whereIn('category_id', $cat_ids)->get();
         $productsAll = json_decode(json_encode($productsAll));
+        // echo "<pre>"; print_r($productsAll); echo "yesss";die;
 
       }else{
         //if it is the subCategory
         $productsAll = Products::where(['category_id' => $categoryDetails->id])->where('status',1)->get();
+        // echo "<pre>"; print_r($productsAll);       
 
       }   
       return view('products.listing')->with(compact('categories','categoryDetails','productsAll'));
@@ -346,24 +360,21 @@ class ProductsController extends Controller
   public function product($id = null){
 
     $productCount = Products::where(['id'=>$id, 'status'=>1])->count();
+
     if($productCount == 0){
       abort(404);
    }
+
     $productDetails = Products::with('attributes')->where(['id'=>$id])->first();
-    // $productDetails = json_decode(json_encode($productDetails));
-    // echo "<pre>";print_r($productDetails);die;
-    // echo "<pre>";print_r($productDetails->attributes);die;
+
     $totalPins = OrdersProduct::where('product_id', $id)->get();
-    // $totalPins = json_decode(json_encode($totalPins));    
-    // echo "<pre>";print_r($totalPins);
+
     $totalPinsAmt = 0;
     foreach ($totalPins as $key => $value) {
       $totalPinsAmt = $totalPinsAmt + $value->product_qty;
     }
 
     $relatedProducts = Products::where('id','!=',$id)->where(['category_id'=>$productDetails->category_id])->get();
-    // $relatedProducts = json_decode(json_encode($relatedProducts));
-    // echo "<pre>";print_r($relatedProducts);die;
 
     $productAltImages = ProductsImage::where(['product_id'=>$id])->get();
 
@@ -371,7 +382,11 @@ class ProductsController extends Controller
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
 
     $total_stock = ProductAttribute::where('product_id', $id)->sum('stock');
-    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts', 'totalPinsAmt'));
+
+    $discountAmt = (($productDetails->percentageDiscount)/100) * ($productDetails->price);
+
+
+    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts', 'totalPinsAmt', 'discountAmt'));
   }
 
   public function getProductPrice(Request $request){
