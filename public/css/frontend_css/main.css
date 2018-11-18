@@ -236,7 +236,7 @@ a#scrollUp i{
 }
 
 .mainmenu ul li:first-child{
-  padding-left: 0px;
+  padding-left: 15px;
 }
 
 .mainmenu ul li a {
@@ -291,11 +291,6 @@ ul.sub-menu {
 	position: absolute;
 	top: 30px;
 	left: 0;
-  background-image: url('../../images/frontend_images/dropDwn_img/incense.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-	background-color: #c2e9fb;
-  background-blend-mode: multiply;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -304,6 +299,16 @@ ul.sub-menu {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	display: none;
 	z-index: 999;
+}
+
+.Pashmina {
+ 
+}
+
+.Antique {
+  background-image: url('../../images/frontend_images/dropDwn_img/incense.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%; 
 }
 
 .dropdown ul.sub-menu li .active{
@@ -1303,7 +1308,9 @@ h2.title {
   margin-bottom: 75px;
   margin-left: 15px;
   margin-right: 15px;
+  margin-top: 47rem;
   padding-bottom: 10px;
+
 }
 .shop-details-tab .col-sm-12 {
 	padding-left: 0;
@@ -2554,11 +2561,38 @@ h2.title {
   margin-top: 2rem;
 }
 
-.max-price{
-  font-size: 1.5rem;
-  position: absolute;
-  left: 7.5rem;
-  top: 17rem;
+.price-money{
+  color: orangered; 
+  font-size: 20px;
+}
+
+.vdo {
+  margin-top: 15px;
+  height: 20rem;
+  width: 100%;
+}
+
+.yes-thumbnails {
+  background-color: red;
 }
 
 
+.col-sm-3 .imgBox{
+  position: relative;
+  overflow: hidden;
+}
+
+.col-sm-3 .imgBox img{
+  width: 100%;
+  border-radius: 4px;
+  transition: transform 0.8s;
+
+}
+
+.col-sm-3 img:hover{
+  transform: scale(1.2);
+}
+
+.col-sm-3 .details{
+  position: relative;
+}

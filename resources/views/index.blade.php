@@ -39,39 +39,17 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <div class="left-sidebar">
-            <h2>Category</h2>
-            <div class="panel-group category-products" id="accordian">
-            <!--category-productsr-->
-              <div class="panel panel-heading">
-                @foreach($categories as $cat)
-                  @if($cat->status == '1')
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="#{{$cat->id}}">
-                          <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            {{$cat->name}}
-                        </a>
-                      </h4>
-                    </div>
-                  @endif
-                  <div id="{{ $cat->id }}" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <ul>
-                        @foreach($cat->subcategories as $subc)
-                          @if($subc->status == '1')
-                            <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
-                          @endif
-                        @endforeach
-                      </ul>
-                    </div>  
-                  </div>
-                @endforeach
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/ramlal.jpg')}}">
+          </div>
+          <div class = "details">
+            <h2>What is Tong ??</h2>
+            <p>Lorem Ipsum Lalaland of the maamland</p>
+          </div>
 
-          
-              </div>
-            </div><!--/category-products-->
-          
+          <br>
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/ramlal.jpg')}}">
           </div>
         </div>
         

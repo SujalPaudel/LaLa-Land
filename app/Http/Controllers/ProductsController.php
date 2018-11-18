@@ -336,12 +336,12 @@ class ProductsController extends Controller
         // $subCategories = json_decode(json_encode($subCategories));
         // echo "<pre>"; print_r($subCategories);die
 
-       
+        
         foreach($subCategories as $subcat){
           $cat_ids[]= $subcat->id; // sub_cat_id
           // echo "<pre>"; print_r($cat_ids);die;     
         }
-        // $cat_ids[] = $categoryDetails->id;
+        $cat_ids[] = $categoryDetails->id;
 
         $productsAll = Products::whereIn('category_id', $cat_ids)->get();
         $productsAll = json_decode(json_encode($productsAll));
@@ -381,12 +381,13 @@ class ProductsController extends Controller
 
     $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
 
-    $total_stock = ProductAttribute::where('product_id', $id)->sum('stock');
+    // $total_stock = ProductAttribute::where('product_id', $id)->get();
+    // echo $total_stock;die;
+    // echo $productDetails->price);die
+    $total_stock = 10;
 
-    $discountAmt = (($productDetails->percentageDiscount)/100) * ($productDetails->price);
 
-
-    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts', 'totalPinsAmt', 'discountAmt'));
+    return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts', 'totalPinsAmt'));
   }
 
   public function getProductPrice(Request $request){

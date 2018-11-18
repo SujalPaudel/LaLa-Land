@@ -26,7 +26,7 @@
 							
 							  <!-- Wrapper for slides -->
 							    <div class="carousel-inner">
-									<div class="item active thumbnails">
+									<div class="item active thumbnails yes-thumbnails">
 										@foreach($productAltImages as $altimage)
 											<a href="{{asset('/images/backend_images/products/large_images/'.$altimage->image)}}" data-standard="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}">
 										 	 <img src="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
@@ -49,48 +49,26 @@
 							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 							<h2>{{$productDetails->product_name}}</h2>
 							<p>Code: {{$productDetails->product_code}}</p>
-							<select id = "selChoice" name = "choices" style = "width:150px;">
-								<!-- <option value = "">Select</option> -->
-								@foreach($productDetails->attributes as $choices)
-									<option value = "{{$productDetails->id}}-{{$choices->size}}">{{$choices->size}}</option>
-								@endforeach
-							</select>
-							<span>
-								<span id = "getPrice" style="margin-left: -15.5rem;">Rs {{$productDetails->price}}</span><br>
-								<em class = "max-price">(Max Price)</em>
-								<label>Pins:</label>
+							<span class = "price-money">$ {{$productDetails->price}}</span>
+
+
+								<span style="margin-left: -15.5rem;">Rs {{$productDetails->price}}</span><br>
+					
+								<label>Quantity:</label>
 								<button class = "btn btn-default decrease-pins" type = "button" id = "decrease">-</button>
 								<input type="text" id = "pins" name = "quantity" value="1" readonly />
 								<br>
-								<button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>
-								<!-- <input type="text" id = "pins1" name = "quantity" value="5" readonly /> -->
-								<span id = "chkPins" style="font-size: 8px;"></span>
-
-								@if($total_stock > 0)
-									<button type="submit" class="btn btn-default cart custom-cart" id = "cartButton">
-										<i class="fa fa-shopping-cart"></i>
-										Pin to cart
-									</button>
-								@endif
+								<button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>		
 
 							</span>
-							<!-- <p><b>Availability:</b><span id = "avaibility">@if($total_stock>0) In Stock @else Out of Stock(The pin is full) @endif</span></p>
-							<p><b>Condition:</b> New</p>
-							<p><b>Brand:</b> E-SHOPPER</p> -->
+							<div class = "vdo">
+								<p><b>Availability:</b><span id = "avaibility">@if($total_stock>0) In Stock @else Out of Stock(The pin is full) @endif</span></p>
+								<p><b>Condition:</b> New</p>
+								<p><b>Brand:</b> E-SHOPPER</p>
+							</div>
+							
 						
-								<div class = "card" style="float: right;">
-									<pre style="line-height: 0.8rem;width:43rem;">
-									<li>Wholesale Starts From: {{$productDetails->starts_at}} pins</li>
-									<li >Current Pins: {{$totalPinsAmt}} pins</li>
-									<li>Reduced price after 6 pins: {{$productDetails->percentageDiscount}}% of {{$productDetails->price}} = Rs {{$discountAmt}}</li>
-									<li>Deduced Price: Rs {{$productDetails->price - $discountAmt}}</li>
-									<li>Deduced Price/pc after {{$productDetails->starts_at}} pins: 5% of {{$productDetails->price - $discountAmt}}</li>
-									</li>
-									</pre>
-								</div>
-
-							</pre>
-						</div><!--/product-information-->
+								
 					</div>
 				</div><!--/product-details-->
 				

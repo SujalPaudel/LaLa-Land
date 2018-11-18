@@ -87,9 +87,9 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
               <ul class="nav navbar-nav collapse navbar-collapse">
                 @foreach($categories as $cat)
                   @if($cat->status == '1')
-                    <li><a href="">{{$cat->name}}
+                    <li><a href="{{url('/category/'.$cat->url)}}" target="_blank">{{$cat->name}}
                       <i class="fa fa-angle-down"></i></a>
-                        <ul role="menu" class="sub-menu">
+                        <ul role="menu" class="sub-menu {{$cat->name}}">
                             
                         @foreach($cat->subcategories as $subc)
                           @if($subc->status == '1')
