@@ -423,15 +423,9 @@ class ProductsController extends Controller
       Session::put('session_id', $session_id);
     }
     
-
-
-    $sizeArr = explode("-", $request->choices);
-    if(!isset($sizeArr[1])){
-      return redirect()->back()->with('flash_message_error', 'Please Select the Category of ');
-    }
     $countProducts = DB::table('cart')->where(['product_id'=>$data['product_id'],
                                                'product_color'=>$data['product_color'],
-                                               'size'=>$sizeArr[1],
+                                              
                                                'session_id'=>$session_id])->count();
 
     if($countProducts>0){ 
@@ -439,16 +433,14 @@ class ProductsController extends Controller
     }
     else{
 
-       $getSKU = ProductAttribute::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]])->first();
-       $getSKU = json_decode(json_encode($getSKU));
-       // echo "<pre>";print_r($getSKU);die;
+       
 
        DB::table('cart')->insert(['product_id'=>$data['product_id'],
                                      'product_name'=>$data['product_name'], 
-                                     'product_code'=>$getSKU->sku,
+                                     
                                      'product_color'=>$data['product_color'],
                                      'price'=>$data['product_price'],
-                                     'size'=>$sizeArr[1],
+                                     
                                      'quantity'=>$data['quantity'],
                                      'user_email'=>$data['user_email'],
                                       'image'=>$data['product_image'],

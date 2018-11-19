@@ -1,31 +1,25 @@
 <div class="col-sm-3">
-  <div class="left-sidebar">
-    <h2>Category</h2>
-    <div class="panel-group category-products" id="accordian">
-    <!--category-productsr-->
-      <div class="panel panel-heading">
-        @foreach($categories as $cat)
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordian" href="#{{$cat->id}}">
-                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                  {{$cat->name}}
-              </a>
-            </h4>
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/stupa.jpg')}}">
+              <h4>Stupa</h4> 
+          </div>         
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/five_cream.jpg')}}">
+              <h4>5 cream in a row</h4>
           </div>
 
-          <div id="{{ $cat->id }}" class="panel-collapse collapse">
-            <div class="panel-body">
-              <ul>
-                @foreach($cat->subcategories as $subc)
-                  <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
-                @endforeach
-              </ul>
-            </div>
-          </div>
-        @endforeach
-      </div>
+          <div class = "imgBox">   
 
-    </div><!--/category-products-->
-  </div>
-</div>
+            <img src="{{asset('images/frontend_images/side_panel/bowl_box.jpg')}}">
+              <h4>Bowl and Boxes together</h4> </div>
+
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/stick.jpg')}}">
+              <h4>Sticks</h4>   </div>
+              
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/flag.jpg')}}">
+              <h4>Flags</h4> </div>
+
+                
+          </div>

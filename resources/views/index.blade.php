@@ -35,27 +35,43 @@
     </div>
   </section><!--/slider-->
   
+<style>
+
+</style>
+
   <section>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
           <div class = "imgBox">
-            <img src="{{asset('images/frontend_images/ramlal.jpg')}}">
-          </div>
-          <div class = "details">
-            <h2>What is Tong ??</h2>
-            <p>Lorem Ipsum Lalaland of the maamland</p>
+            <img src="{{asset('images/frontend_images/side_panel/stupa.jpg')}}">
+              <h4>Stupa</h4> 
+          </div>         
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/five_cream.jpg')}}">
+              <h4>5 cream in a row</h4>
           </div>
 
-          <br>
+          <div class = "imgBox">   
+
+            <img src="{{asset('images/frontend_images/side_panel/bowl_box.jpg')}}">
+              <h4>Bowl and Boxes together</h4> </div>
+
           <div class = "imgBox">
-            <img src="{{asset('images/frontend_images/ramlal.jpg')}}">
+            <img src="{{asset('images/frontend_images/side_panel/stick.jpg')}}">
+              <h4>Sticks</h4>   </div>
+
+          <div class = "imgBox">
+            <img src="{{asset('images/frontend_images/side_panel/flag.jpg')}}">
+              <h4>Flags</h4> </div>
+
+                
           </div>
-        </div>
+  
         
         <div class="col-sm-9 padding-right">
           <div class="features_items"><!--features_items-->
-            <h2 class="title text-center">Features Items</h2>
+            <h2 class="title text-center">Featured Items</h2>
             @foreach($productsAll as $product)
               <div class="col-sm-4">
                 <div class="product-image-wrapper">

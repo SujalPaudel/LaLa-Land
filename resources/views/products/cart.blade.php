@@ -29,12 +29,13 @@
           <thead>
             <tr class="cart_menu">
               <td class="image">Item</td>
-              <td class="description"></td>
+              <td class="description">Description</td>
               <td class="price">Price</td>
               <td class="quantity">Pins</td>
               <td class="total">Total</td>
               <td></td>
             </tr>
+        
           </thead>
           <tbody>
           <?php $total_amount = 0; ?>                  
@@ -44,11 +45,11 @@
                 <a href=""><img src="{{asset('images/backend_images/products/small_images/'.$cart->image)}}" alt="" style = "width:80px;"></a>
               </td>
               <td class="cart_description">
-                <h4><a href="">{{$cart->product_name}}</a></h4>
+                <h4>{{$cart->product_name}}</h4>
                 <p>Code: {{$cart->product_code}} | {{$cart->size}} 
               </td>
               <td class="cart_price">
-                <p>Rs {{$cart->price}}</p>
+                <p>$ {{$cart->price}}</p>
               </td>
               <td class="cart_quantity">
                 <div class="cart_quantity_button">
@@ -59,7 +60,7 @@
                 </div>
               </td>
               <td class="cart_total">
-                <p class="cart_total_price">{{$cart->price * $cart->quantity}}</p>
+                <p class="cart_total_price">$ {{$cart->price * $cart->quantity}}</p>
               </td>
               <td class="cart_delete">
                 <a class="cart_quantity_delete" href="{{url('/cart/delete-product/'.$cart->id)}}"><i class="fa fa-times"></i></a>
