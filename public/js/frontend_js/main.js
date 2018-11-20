@@ -284,9 +284,14 @@ $().ready(function(){
 			$("#shipping_mobile").val('');			
 		}
 	})
-
+;
 	$("#increase").on('click', function(){
 		$("#pins").val(parseInt($("#pins").val(), 10) + 1);
+		
+		// counter = counter + 1;
+
+		$("#cart_total").val(parseInt($("#pins").val(), 10) * parseInt($("#cart_price").val()));		
+		// alert(cart_total_price);
 	})
 
 	$("#decrease").on('click', function(){

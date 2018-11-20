@@ -48,19 +48,21 @@
                 <h4>{{$cart->product_name}}</h4>
                 <p>Code: {{$cart->product_code}} | {{$cart->size}} 
               </td>
-              <td class="cart_price">
+              <td id = "cart_price" class="cart_price">
                 <p>$ {{$cart->price}}</p>
               </td>
               <td class="cart_quantity">
                 <div class="cart_quantity_button">
-                  <button class="btn btn-default cart-pins-minus" id = "decrease"> - </button>
+                <a class = "cart_quantity_up" href = "{{url('/cart/update-quantity/'.$cart->id.'/1')}}">+</a>
                   <input class="cart_quantity_input" type="text" name="quantity" id = "pins" value="{{$cart->quantity}}" autocomplete="off" size = "2" readonly>                  
-                  <button class = "btn btn-default cart-pins-plus" id = "increase">+</button>                   
-                  
+                @if($cart->quantity >1)
+                  <a class = "cart_quantity_up" href = "{{url('/cart/update-quantity/'.$cart->id.'/-1')}}">-</a>
+                @endif
                 </div>
               </td>
-              <td class="cart_total">
-                <p class="cart_total_price">$ {{$cart->price * $cart->quantity}}</p>
+              <td>
+                <input class="cart_quantity_input" id = "cart_total" class="cart_total" value = "{{$cart->price * $cart->quantity}}" size = "2" readonly>
+                
               </td>
               <td class="cart_delete">
                 <a class="cart_quantity_delete" href="{{url('/cart/delete-product/'.$cart->id)}}"><i class="fa fa-times"></i></a>

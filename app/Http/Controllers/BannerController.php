@@ -16,6 +16,7 @@ class BannerController extends Controller
         // echo "<pre>";print_r($data);die;
         $banner = new Banner;
         $banner->title = $data['title'];
+        $banner->content = $data['content'];
         $banner->link = $data['link'];
 
         if(empty($data['status'])){
@@ -34,7 +35,7 @@ class BannerController extends Controller
 
             $banner_path = 'images/frontend_images/banners/'.$filename;
             
-            Image::make($image_tmp)->resize(1140,340)->save($banner_path);
+            Image::make($image_tmp)->resize(570,340)->save($banner_path);
 
             // store image in products table
             $banner->image = $filename;
@@ -81,7 +82,7 @@ class BannerController extends Controller
             $filename = $data['current_image'];
           } 
 
-          Banner::where('id', $id)->update(['title'=>$data['title'], 'link'=>$data['link'], 'status'=>$status, 'image'=>$filename]);
+          Banner::where('id', $id)->update(['title'=>$data['title'], 'link'=>$data['link'], 'content'=>$data['content'],'status'=>$status, 'image'=>$filename]);
           return redirect()->back()->with('flash_message_success', 'The banner has been successfully updated');
       }
 

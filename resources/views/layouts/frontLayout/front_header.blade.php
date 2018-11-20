@@ -73,7 +73,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
     <div class="header-bottom"><!--header-bottom-->
       <div class="container">
         <div class="row">
-          <div class="col-sm-9">
+          <div class="col-sm-9 shyamlal">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -83,21 +83,23 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
               </button>
             </div>
 
-            <div class="mainmenu pull-left">
+            <div class="mainmenu">
               <ul class="nav navbar-nav collapse navbar-collapse">
                 @foreach($categories as $cat)
                   @if($cat->status == '1')
                     <li><a href="{{url('/category/'.$cat->url)}}" target="_blank">{{$cat->name}}
                       <i class="fa fa-angle-down"></i></a>
-                        <ul role="menu" class="sub-menu {{$cat->name}}">
-                            
-                        @foreach($cat->subcategories as $subc)
-                          @if($subc->status == '1')
-                            <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
-                          @endif
-                        @endforeach
-                      
-                        </ul>
+                        
+                          <ul role="menu" class="sub-menu {{$cat->name}}">
+                              
+                            @foreach($cat->subcategories as $subc)
+                              @if($subc->status == '1')
+                                <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
+                              @endif
+                            @endforeach
+                        
+                          </ul>
+
                   @endif
                 @endforeach
             </div>
@@ -112,3 +114,5 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
       </div>
     </div><!--/header-bottom-->
   </header><!--/header-->
+
+  <!-- <div class = "parent"> -->

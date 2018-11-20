@@ -69,7 +69,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: linear-gradient(to right bottom, #55c57a, #7ed56f) repeat scroll 0 0 #F0F0E9;
+  background: linear-gradient(to right bottom, #7ed56f, #55c57a) repeat scroll 0 0 #F0F0E9;
 }
 
 .contactinfo ul li:first-child{
@@ -230,6 +230,10 @@ a#scrollUp i{
   padding-left: 0;
 }
 
+.mainmenu{
+  position: relative;
+}
+
 .mainmenu ul li{
   padding-right: 15px;
   padding-left: 15px;
@@ -252,6 +256,7 @@ a#scrollUp i{
 	background:none;
 	color:#fdb45e;
 }
+
 
 .search_box input {
   background: #F0F0E9;
@@ -289,12 +294,15 @@ a#scrollUp i{
 
 ul.sub-menu {
 	position: absolute;
-	top: 30px;
+	top: 5;
 	left: 0;
+  right: 0;
+
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 220px;
+	width: 900px;
+  height: 500px;
 	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	display: none;
@@ -369,8 +377,8 @@ ul.sub-menu {
 
 #footer {
   background-image: linear-gradient(to right bottom, 
-                                    rgba(7, 162, 71, 0.7), 
-                                    rgba(5, 184, 94, 0.7)),
+                                    rgba(218,165,32, 0.7),
+                                    rgba(255,165,0, 0.7)),
                                     url(footer.jpg);
 
   background-size: cover;  
@@ -611,7 +619,7 @@ ul.sub-menu {
 }
 
 .carousel-indicators li.active {
-	  background: #FE980F;
+	  background: #55c57a;
 }
 
 .item {
@@ -637,7 +645,9 @@ ul.sub-menu {
 }
 
 .item h1 span {
-	color:#FE980F;
+  background: linear-gradient(#5643fa, #2998ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;	
 }
 
 .item h2 {
@@ -657,7 +667,7 @@ ul.sub-menu {
 }
 
 .get {
-  background: #FE980F;
+  background: linear-gradient(to right bottom, #7ed56f, #55c57a);
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
@@ -2666,8 +2676,11 @@ position: absolute;
 
 }
 
-.col-sm-3 img:hover{
-  filter: blur(2px) brightness(50%);
-  box-shadow: 0 0 32px cyan;
+
+.ramlal {
+  height: 10rem;
 }
 
+.shyamlal {
+  position: relative;
+}
