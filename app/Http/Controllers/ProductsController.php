@@ -25,6 +25,7 @@ class ProductsController extends Controller
     public function addProduct(Request $request){
 
       if($request->isMethod('post')){
+
         $data = $request->all();
         // echo "<pre>"; print_r($data);die;
        if(empty($data['category_id'])){
@@ -66,9 +67,11 @@ class ProductsController extends Controller
           }
         }
 
-        $product->save();
-        return redirect('/admin/view-products')->with('flash_message_success','Product has been added successfully!');
-      }
+       
+          $product->save();
+          return redirect('/admin/view-products')->with('flash_message_success','Product has been added successfully!');
+      } 
+      else{
 
       $categories =  Category::where(['parent_id'=>0])->get();
       $categories_dropdown = "<option value = '' selected disabled>Select</option>";
@@ -81,6 +84,7 @@ class ProductsController extends Controller
       }
       return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
+  }
 
     public function viewProducts(Request $request){
       $products = Products::orderBy('id', 'DESC')->get();
