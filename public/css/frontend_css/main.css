@@ -309,6 +309,12 @@ ul.sub-menu {
 	z-index: 999;
 }
 
+/* Background of Sub-Menu */
+
+.Incense {
+  background-image: url('../../images/frontend_images/dropDwn_img/antique.jpg');  
+}
+
 .Pashmina {
  
 }
@@ -2683,4 +2689,8 @@ position: absolute;
 
 .shyamlal {
   position: relative;
+}
+
+.about-text-section{
+  margin-top: 3rem;
 }

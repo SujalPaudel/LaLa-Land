@@ -52,6 +52,12 @@ Route::match(['get', 'post'], '/check-email', 'UsersController@checkMail');
 
 Route::match(['get', 'post'], '/check-email-for-login', 'UsersController@checkMailForLogin');
 
+Route::get('/about-us', 'TitlebarController@displayAboutPage');
+
+// Route for about artist page
+
+Route::get('/our-artist', 'TitlebarController@displayOurArtist');
+
 // The grouped routes are protected by the middleware
 // All routes after being logged in
 
@@ -114,6 +120,16 @@ Route::group(['middleware' => ['auth']], function(){
   Route::get('/admin/view-banners', 'BannerController@viewBanners');
   Route::match(['get','post'], '/admin/edit-banner/{id}', 'BannerController@editBanner');
   Route::get('/admin/delete-banner/{id}', 'BannerController@deleteBanner');
+
+  // the title bar section
+
+  // For adding about us section
+  Route::match(['get', 'post'], '/admin/add-aboutUs', 'TitlebarController@addAboutUs');
+
+  // For adding artist interview section
+
+  Route::match(['get', 'post'], '/admin/add-artist', 'TitlebarController@addOurArtist');
+
 });
 
 // About the user Login/Register

@@ -33,6 +33,19 @@
       </ul>
     </li>    
 
+    <li @if(preg_match('/aboutUs/i', $url)) class = "submenu open" @else class = "submenu" @endif> <a href="#"><i class="icon icon-th-list"></i> <span>About Us</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li @if(preg_match('/add-aboutUs/i', $url)) class = "active" @endif ><a href="{{url('/admin/add-aboutUs')}}">Add About Us</a></li>
+        <li @if(preg_match('/view-banners/i', $url)) class = "active" @endif ><a href="#">View AboutUs</a></li>
+      </ul>
+    </li> 
+
+    <li @if(preg_match('/artist/i', $url)) class = "submenu open" @else class = "submenu" @endif> <a href="#"><i class="icon icon-th-list"></i> <span>Artist</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li @if(preg_match('/add-artist/i', $url)) class = "active" @endif ><a href="{{url('/admin/add-artist')}}">Add Artist</a></li>
+        <li @if(preg_match('/view-artists/i', $url)) class = "active" @endif ><a href="#">View AboutUs</a></li>
+      </ul>
+    </li> 
 
   </ul>
 </div>

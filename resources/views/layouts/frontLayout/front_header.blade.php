@@ -15,25 +15,30 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
     <div class="header_top"><!--header_top-->
       <div class="container">
         <div class="row">
-          <div class="col-sm-6">
-            <div class="contactinfo">
+          <div class="col-sm-12">
+            <div class="contactinfo" style="position: relative;">
               <ul class="nav nav-pills">
-                <li><button class = "btn btn-primary"><a>Explore</a></button></li>
-                <li><a>About Us</a></li>
+                <li><a href = "{{url('/about-us')}}">About Us</a></li>
+                <li><a href = "{{url('/our-artist')}}">Our Artists</a></li>
+                <li><a href = "{{url('/Customer-service')}}">Customer Service</a></li>
+                <li><a href = "{{url('/wholesale')}}">Wholesale</a></li>
+                <li><a href = "{{url('/blog')}}">Blog</a></li>
+                <li><a href = "{{url('/new-items')}}">New ITEMS</a></li>
+                <li><a href = "{{url('/sale')}}">Sale</a></li>
+                <li><a href = "{{url('/gift-certifications')}}">Gift Certificates</a></li>
                 <li><a>Store</a></li>
                 <li><a>Our Collections</a></li>
                 <li><a>Meet Us</a></li>
               </ul>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="social-icons pull-right">
+          
+            <div class="social-icons pull-right" style="position: absolute;top:0;left: 85%;">
               <ul class="nav navbar-nav">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+                <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
               </ul>
             </div>
           </div>
