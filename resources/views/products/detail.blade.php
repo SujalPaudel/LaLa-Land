@@ -4,8 +4,7 @@
 <section>
   <div class="container">
     <div class="row">
-      @include('layouts.frontLayout.front_sidebar')     
-      <div class="col-sm-9 padding-right">
+      <div class="col-sm-12 padding-right">
 
         @if(Session::has('flash_message_error'))
           <div class = "alert alert-error alert-block" style="background-color: #D03D33;">

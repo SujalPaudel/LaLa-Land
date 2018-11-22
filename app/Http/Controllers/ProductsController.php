@@ -688,6 +688,28 @@ class ProductsController extends Controller
   }
 
   public function thanks(){
+    $user_email = Auth::user()->email;
+    DB::table('cart')->where('user_email', $user_email)->delete();
     return view('products.thanks');
   }
+
+  public function userOrders(){
+    $user_id = Auth::user()->id;
+    $orders = Order::with('orders')->where('user_id', $user_id)->orderBy('id', 'DESC')->get(); // to show every previous orders of user
+    // $orders = json_decode(json_encode($orders));
+    // echo "<pre>";print_r($orders);die;
+    return view('orders.user_orders')->with(compact('orders'));
+  }
+
+  public function userOrderDetails($order_id){
+    $id = Auth::user()->id;
+    // echo($id);die;
+    $orderDetails = Order::with('orders')->where('id', $order_id)->first();
+    // $ramlal = json_decode(json_encode($orderDetails));
+    // echo "<pre>";print_r($ramlal);die;
+    // echo("Ramlal");
+    return view('orders.user_order_history')->with(compact('orderDetails'));
+  } 
 }
+
+

@@ -1532,7 +1532,7 @@ h2.title {
 }
 
 .login-form form button, .signup-form form button {
-  background: #FE980F;
+  background: linear-gradient(to right bottom,#2998ff,  #5643fa);
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
@@ -1557,7 +1557,7 @@ h2.title {
 
 
 .or{
-	background: #FE980F;
+	background: linear-gradient(to right bottom, #2998ff,  #5643fa);
 	border-radius: 40px;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
@@ -2692,3 +2692,4 @@ position: absolute;
 .about-text-section{
   margin-top: 3rem;
 }
+
