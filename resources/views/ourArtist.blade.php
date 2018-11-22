@@ -20,11 +20,15 @@
 
       @foreach($interviews as $interview)
       <div class = "col-sm-6">
+      <h3>{{$interview->name}}</h3>
         <p>{{$interview->artist_interview}}</p>
+        <hr style="border-top: 1px solid #8c8b8b;">
       </div>
       <div class = "col-sm-6">
-        <img src = "{{url('/images/backend_images/artist/'.$interview->artist_image)}}" width="100%" height="400px">
+        <img src = "{{url('/images/backend_images/artist/'.$interview->artist_image)}}" width="100%" height="400px" style="border-radius: 5px;">
+        <hr style="border-top: 1px solid #8c8b8b;">
       @endforeach
+
   </div>
 </div>
 

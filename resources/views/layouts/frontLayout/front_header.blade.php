@@ -20,7 +20,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
               <ul class="nav nav-pills">
                 <li><a href = "{{url('/about-us')}}">About Us</a></li>
                 <li><a href = "{{url('/our-artist')}}">Our Artists</a></li>
-                <li><a href = "{{url('/Customer-service')}}">Customer Service</a></li>
+                <li><a href = "{{url('/customer-service')}}">Customer Service</a></li>
                 <li><a href = "{{url('/wholesale')}}">Wholesale</a></li>
                 <li><a href = "{{url('/blog')}}">Blog</a></li>
                 <li><a href = "{{url('/new-items')}}">New ITEMS</a></li>

@@ -72,6 +72,7 @@ class TitlebarController extends Controller
             // echo "<pre>";print_r($data);die;
             
             $interview = new ArtistInterview;
+            $interview->name = $data['name'];
             $interview->artist_interview = $data['content'];
 
             if($request->hasFile('image')){

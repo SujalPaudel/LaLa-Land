@@ -31,6 +31,12 @@
           <div class="widget-content nopadding">
             <form enctype = "multipart/form-data" class="form-horizontal" method="post" action="{{url('/admin/add-artist')}}" name="add_bannert" id="add_banner"> {{ csrf_field() }}
 
+              <div class = "control-group">
+                <label class="control-label">Name</label>
+                <div class="controls">
+                  <input style="width:200px;" type="text" name = "name" required autocomplete="off">
+                </div>
+              </div>
 
               <div class = "control-group">
                 <label class="control-label">Content</label>
