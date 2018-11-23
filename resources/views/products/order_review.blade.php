@@ -69,7 +69,7 @@
           <thead>
             <tr class="cart_menu">
               <td class="image">Item</td>
-              <td class="description"></td>
+              <td class="description">Description</td>
               <td class="price">Price</td>
               <td class="quantity">Quantity</td>
               <td class="total">Total</td>
@@ -88,15 +88,13 @@
                 <p>{{$cartItem->size}}</p>
               </td>
               <td class="cart_price">
-                <p>Rs {{$cartItem->price}}</p>
+               <p>$ {{$cartItem->price}}</p>
               </td>
               <td class="cart_quantity">
-                <div class="cart_quantity_button">
-                  {{$cartItem->quantity}}
-                </div>
+                <p>{{$cartItem->quantity}}</p>
               </td>
               <td class="cart_total">
-                <p class="cart_total_price">{{$cartItem->quantity * $cartItem->price }}</p>
+                <p class="cart_total_price">$ {{$cartItem->quantity * $cartItem->price }}</p>
               </td>
             </tr>
             <?php $total_amount = $total_amount + ($cartItem->quantity * $cartItem->price); ?>

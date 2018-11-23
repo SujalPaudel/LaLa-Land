@@ -23,7 +23,6 @@ $mainCategories = json_decode(json_encode($mainCategories));
             </div>
           </div>
    
-       
           <div class="col-sm-4">
             <div class="single-widget">
               <h2>About Shopper</h2>

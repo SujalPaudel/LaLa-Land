@@ -53,10 +53,10 @@ a#scrollUp {
   bottom: 0px;
   right: 10px;
   padding: 5px 10px;
-  background: #FE980F;
+  background: linear-gradient(to right bottom, #55c57a, #7ed56f);
   color: #FFF;
-  -webkit-animation: bounce 2s ease infinite;
-  animation: bounce 2s ease infinite;
+  -webkit-animation: flip 2s ease infinite;
+  animation: flip 2s ease infinite;
 }
 
 a#scrollUp i{
@@ -1673,9 +1673,15 @@ h2.title {
   font-size: 18px
 }
 
+.cart_quantity p{
+  color:#696763;
+  font-size: 18px
+}
 
 #cart_items .cart_info .cart_total_price {
-  color: #FE980F;
+  background: linear-gradient(#ffb900, #ff7300);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 24px;
 }
 
@@ -1685,10 +1691,12 @@ h2.title {
 }
 
 .cart_quantity_button a {
-  background:#F0F0E9;
-  color: #696763;
+  background: linear-gradient(to right bottom, #ffb900, #ff7300);
+
+  color: #000000;
   display: inline-block;
   font-size: 16px;
+  font-weight: 700;
   height: 28px;
   overflow: hidden;
   text-align: center;
@@ -2691,5 +2699,11 @@ position: absolute;
 
 .about-text-section{
   margin-top: 3rem;
+}
+
+.cart_quantity_down{
+  position: absolute;
+  top: 0;
+  left: 6.8rem;
 }
 

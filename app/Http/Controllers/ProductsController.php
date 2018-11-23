@@ -484,18 +484,8 @@ class ProductsController extends Controller
     Session::forget('CouponAmount');
     Session::forget('CouponCode');
 
-    $getCartDetails = DB::table('cart')->where('id',$id)->first();
-    $getAttributeStock = ProductAttribute::where('sku',$getCartDetails->product_code)->first();
-    $inStock = $getAttributeStock->stock;echo '--';
-    $inDemand = $getCartDetails->quantity+$quantity;
-
-    if($inStock >= $inDemand){
-      DB::table('cart')->where('id', $id)->increment('quantity');
-      return redirect('cart')->with('flash_message_success', 'Updated quantity successfully');
-    }else{
-      return redirect()->back()->with('flash_message_error', 'The product is out of stock !!');
-    }
-
+    DB::table('cart')->where('id', $id)->increment('quantity', $quantity);
+    return redirect()->back()->with('flash_message_success', 'Product Quantity has been successfully updated');    
   }
 
   public function applyCoupon(Request $request){

@@ -52,13 +52,13 @@
                 <p>$ {{$cart->price}}</p>
               </td>
               <td class="cart_quantity">
-                <div class="cart_quantity_button">
+              <div class="cart_quantity_button" style="position: relative;">
                 <a class = "cart_quantity_up" href = "{{url('/cart/update-quantity/'.$cart->id.'/1')}}">+</a>
                   <input class="cart_quantity_input" type="text" name="quantity" id = "pins" value="{{$cart->quantity}}" autocomplete="off" size = "2" readonly>                  
                 @if($cart->quantity >1)
-                  <a class = "cart_quantity_up" href = "{{url('/cart/update-quantity/'.$cart->id.'/-1')}}">-</a>
+                  <a class = "cart_quantity_down" href = "{{url('/cart/update-quantity/'.$cart->id.'/-1')}}">-</a>
                 @endif
-                </div>
+              </div>
               </td>
               <td>
                 <input class="cart_quantity_input" id = "cart_total" class="cart_total" value = "{{$cart->price * $cart->quantity}}" size = "2" readonly>
