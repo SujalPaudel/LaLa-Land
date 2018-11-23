@@ -672,16 +672,22 @@ class ProductsController extends Controller
 
       Session::put('order_id', $order_id);
       Session::put('grand_total', $data['grand_total']);
+
       // Redirect to thanks page after storing some data in session
-      return redirect('/thanks');
+      return redirect('/paypal');
     }
   }
 
-  public function thanks(){
-    $user_email = Auth::user()->email;
-    DB::table('cart')->where('user_email', $user_email)->delete();
-    return view('products.thanks');
+  // public function thanks(){
+  //   $user_email = Auth::user()->email;
+  //   DB::table('cart')->where('user_email', $user_email)->delete();
+  //   return view('orders.thanks');
+  // }
+
+  public function paypal(){
+    return view('orders.paypal');
   }
+
 
   public function userOrders(){
     $user_id = Auth::user()->id;

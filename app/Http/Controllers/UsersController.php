@@ -9,6 +9,7 @@ use Session;
 use App\State;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class UsersController extends Controller
 {
@@ -35,12 +36,18 @@ class UsersController extends Controller
           // return redirect()->back()->with('flash_message_success', 'You have been successfully registered');
           
           // After the above operation is performed the next job is to login the user simultaneously
-          if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
-            Session::put('frontSession', $data['email']);            
-            return redirect('/cart');
+
+            if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
+              Session::put('frontSession', $data['email']); 
+              if(!empty(Session::get('session_id'))){
+                $session_id = Session::get('session_id');
+                DB::table('cart')->where('session_id', $session_id)->update(['user_email'=>$data['email']]);
+                
+                return redirect('/cart');
           }
         }
-        }
+      }
+    }
                   
 
 
@@ -108,6 +115,10 @@ class UsersController extends Controller
       if($request->isMethod('post')){
         $data = $request->all();
         // echo "<pre>";print_r($data);die;
+        $session_id = Session::get('session_id');
+        if(!empty($session_id)){
+          DB::table('cart')->where('session_id', $session_id)->update(['user_email'=>$data['email']]);
+        }
         if(Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])){
           Session::put('frontSession', $data['email']);
           return redirect('/cart');

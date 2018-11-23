@@ -76,6 +76,10 @@ Route::group(['middleware' => ['frontLogin']], function(){
 
   Route::get('/thanks', 'ProductsController@thanks');
 
+  // paypal function
+
+  Route::get('/paypal', 'ProductsController@paypal');
+
   // Users orders page
 
   Route::get('/orders', 'ProductsController@userOrders');
@@ -145,7 +149,7 @@ Route::get('/login-register', 'UsersController@userLoginRegister');
 
 // Post the users registration credentials
 
-Route::post('/user-register', 'UsersController@register')->middleware('verified');  
+Route::post('/user-register', 'UsersController@register');
 
 Route::get('/user-logout', 'UsersController@logout');
 

@@ -302,14 +302,10 @@ $().ready(function(){
 	})
 
 
-
-
-	
-
 });
 
 function selectPaymentMethod(){
-	if($('#paypal').is(':checked') || $("#paypal").is(':checked')){
+	if($('#paypal').is(':checked')){
 		alert("test");
 	}else{
 		alert("Please select a payment method");

@@ -137,10 +137,7 @@
       <input type = "hidden" name = "CouponCode"/>
         <div class="payment-options">
             <span>
-              <label><strong>Select Payment Method</strong></label>
-            </span>
-            <span>
-              <label><strong><input name = "payment_method" type="radio" class = "COD" id = "COD" value = "COD"> Cash On Delivery</label></strong>
+              <label><strong>Payment Method</strong></label>
             </span>
             <span>
               <label><strong><input name = "payment_method" type="radio" class = "paypal" id = "paypal" value = "PayPal"> Paypal</label></strong>
