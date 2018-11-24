@@ -77,13 +77,12 @@
   <section>
     <div class="container">
       <div class="row">
-      @include('layouts.frontLayout.front_sidebar');
         
-        <div class="col-sm-9 padding-right">
+        <div class="col-sm-12 padding-right">
           <div class="features_items"><!--features_items-->
             <h2 class="title text-center">{{$categoryDetails->name}}</h2>
             @foreach($productsAll as $product)
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="product-image-wrapper">
                   <div class="single-products">
                       <div class="productinfo text-center">

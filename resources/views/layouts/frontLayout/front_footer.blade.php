@@ -3,7 +3,7 @@ use App\Http\Controllers\Controller;
 use App\Category;
 
 $mainCategories = Controller::mainCategories();
-$mainCategories = json_decode(json_encode($mainCategories));
+$categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
 ?>
 
 
@@ -14,10 +14,12 @@ $mainCategories = json_decode(json_encode($mainCategories));
         <div class="row">
           <div class="col-sm-4">
             <div class="single-widget">
-              <h2>Right Now</h2>
+              <h2>Shop Now</h2>
               <ul class="nav nav-pills nav-stacked">
-                @foreach($mainCategories as $mainCat)
-                  <li><a href="#">{{$mainCat->name}}</a></li>
+                @foreach($categories as $cat)
+                  @if($cat->status == '1')
+                    <li><a href="{{url('/category/'.$cat->url)}}">{{$cat->name}}</a></li>
+                  @endif
                 @endforeach
               </ul>
             </div>
@@ -25,7 +27,7 @@ $mainCategories = json_decode(json_encode($mainCategories));
    
           <div class="col-sm-4">
             <div class="single-widget">
-              <h2>About Shopper</h2>
+              <h2>About</h2>
               <ul class="nav nav-pills nav-stacked">
                 <li><a href="#">Company Information</a></li>
                 <li><a href="#">Careers</a></li>
@@ -37,7 +39,7 @@ $mainCategories = json_decode(json_encode($mainCategories));
           </div>
           <div class="col-sm-4">
             <div class="single-widget come-closer">
-              <h2>Lets Come Closer</h2>
+              <h2>Contact Us</h2>
                 <p>Get the most recent updates from <br />our site and be updated your self...</p>
                 <p>Email: <strong style="color: black;">info@harmonicgrace.com</strong></p>
               </form>

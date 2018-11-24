@@ -17,7 +17,7 @@
           <div class="col-sm-5">
             <div class="view-product">
               <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                <a href = "{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}">
+                <a href = "{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}">
                 <img src="{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}" style = "width:300px;" class = "mainImage" alt="" />
               </div>
             </div>
@@ -27,8 +27,8 @@
                   <div class="carousel-inner">
                   <div class="item active thumbnails yes-thumbnails">
                     @foreach($productAltImages as $altimage)
-                      <a href="{{asset('/images/backend_images/products/large_images/'.$altimage->image)}}" data-standard="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}">
-                       <img src="{{asset('/images/backend_images/products/small_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
+                      <a href="{{asset('/images/backend_images/products/medium_images/'.$altimage->image)}}">
+                       <img src="{{asset('/images/backend_images/products/medium_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
                       </a>
                     @endforeach
                   </div>
