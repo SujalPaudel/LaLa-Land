@@ -16,7 +16,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div class="contactinfo" style="position: relative;">
+            <div class="contactinfo">
               <ul class="nav nav-pills">
                 <li><a href = "{{url('/about-us')}}">About Us</a></li>
                 <li><a href = "{{url('/our-artist')}}">Our Artists</a></li>
@@ -30,9 +30,9 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
                 <li><a>Our Collections</a></li>
                 <li><a>Meet Us</a></li>
               </ul>
-            </div>
           
-            <div class="social-icons pull-right" style="position: absolute;top:0;left: 85%;">
+          
+            <div class="social-icons pull-right"">
               <ul class="nav navbar-nav">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -40,7 +40,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
                 <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
                 <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
               </ul>
-            </div>
+            </div></div>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
     <div class="header-bottom"><!--header-bottom-->
       <div class="container">
         <div class="row">
-          <div class="col-sm-9 shyamlal">
+          <div class="col-sm-9">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -89,13 +89,13 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
             </div>
 
             <div class="mainmenu">
-              <ul class="nav navbar-nav collapse navbar-collapse">
+              <ul class="nav navbar-nav collapse navbar-collapse" style="position: relative;">
                 @foreach($categories as $cat)
                   @if($cat->status == '1')
-                    <li><a href="{{url('/category/'.$cat->url)}}" target="_blank">{{$cat->name}}
+                    <li><a href="{{url('/category/'.$cat->url)}}"`>{{$cat->name}}
                       <i class="fa fa-angle-down"></i></a>
                         
-                          <ul role="menu" class="sub-menu {{$cat->name}}">
+                          <ul role="menu" class="sub-menu {{$cat->name}}" >
                               
                             @foreach($cat->subcategories as $subc)
                               @if($subc->status == '1')
