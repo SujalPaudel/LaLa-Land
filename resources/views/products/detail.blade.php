@@ -4,7 +4,7 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 padding-right">
+      <div class="col-sm-12">
 
         @if(Session::has('flash_message_error'))
           <div class = "alert alert-error alert-block" style="background-color: #D03D33;">
@@ -17,8 +17,12 @@
           <div class="col-sm-5">
             <div class="view-product">
               <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                <a href = "{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}">
-                <img src="{{asset('images/backend_images/products/medium_images/'.$productDetails->image)}}" style = "width:300px;" class = "mainImage" alt="" />
+
+              <!--Post hover!-->
+                <a href = "{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}"> 
+
+              <!--Pre Hover !-->
+                <img src="{{asset('images/backend_images/products/small_images/'.$productDetails->image)}}" class = "mainImage" alt=""/>
               </div>
             </div>
             <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -49,23 +53,22 @@
               <h2>{{$productDetails->product_name}}</h2>
               <p>Code: {{$productDetails->product_code}}</p>
               <span class = "price-money">$ {{$productDetails->price}}</span>
+              <br>
+                <div class = "inner-quantity" style="position: relative;">
+                  <label style="position: absolute; top: 0px;left: 0px;">Quantity:</label>
+                  <button class = "btn btn-default decrease-pins" type = "button" id = "decrease">-</button>
+                  <input type="text" class = "form-control-one" id = "pins" name = "quantity" value="1" readonly />
+                  <br>
+                  <button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>    
 
-
-                <span style="margin-left: -15.5rem;">$ {{$productDetails->price}}</span><br>
-          
-                <label>Quantity:</label>
-                <button class = "btn btn-default decrease-pins" type = "button" id = "decrease">-</button>
-                <input type="text" class = "form-control-one" id = "pins" name = "quantity" value="1" readonly />
-                <br>
-                <button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>    
-
-                <div class = "detail-cart">
-                  <button type="Submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
-                  Add to cart</button>   
+                  <div class = "detail-cart">
+                    <button type="Submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
+                    Add to cart</button>   
+                  </div>
                 </div>           
                 <div class = "vdo">
                   <iframe src="http://www.youtube.com/embed/W7qWa52k-nE"
-                          width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                          width="100%" height="130%" frameborder="0" allowfullscreen></iframe>
               </div>
               
             

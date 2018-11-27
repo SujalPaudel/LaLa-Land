@@ -33,6 +33,7 @@
 </div>
 
 @endsection
+</div>
 
 <!-- @extends('layouts.frontLayout.front_design')
 

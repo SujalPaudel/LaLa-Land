@@ -43,5 +43,8 @@
   <script src="/js/frontend_js/jquery.prettyPhoto.js"></script>
   <script src="/js/frontend_js/main.js"></script>
   <script src="/js/frontend_js/passtrength.js"></script>
+  
+  <!-- anime.js -->
+  <script src="/js/frontend_js/anime.js"></script>
 </body>
 </html>

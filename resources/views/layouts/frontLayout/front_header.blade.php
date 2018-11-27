@@ -32,8 +32,8 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
               </ul>
           
           
-            <div class="social-icons pull-right"">
-              <ul class="nav navbar-nav">
+            <div class="social-icons">
+              <ul class="nav navbar-nav" style="float: right;">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -51,7 +51,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
         <div class="row">
           <div class="col-sm-4">
             <div class="logo pull-left">
-              <a href="{{url('/')}}"><img src="{{asset('images/frontend_images/home/logo.png')}}" alt="" /></a>
+              <a href="{{url('/')}}"><img src="{{asset('images/frontend_images/logo.jpg')}}" width = "150px"alt="" /></a>
             </div>
           </div>
 
@@ -95,15 +95,21 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
                     <li><a href="{{url('/category/'.$cat->url)}}"`>{{$cat->name}}
                       <i class="fa fa-angle-down"></i></a>
                         
-                          <ul role="menu" class="sub-menu {{$cat->name}}" >
-                              
+                          <ul role="menu" class="sub-menu {{$cat->name}}">
+                            <!-- <div id = "{{$cat->name}}"></div> -->
                             @foreach($cat->subcategories as $subc)
                               @if($subc->status == '1')
-                                <li><a href="{{ $subc->url }}">{{$subc->name}}</a></li>
+                              <!-- <div class = "row"> -->
+                                <div class = "col-sm-4">
+                                  <li><a href='{{ url("$cat->url/$subc->url") }}' class = "hamba">{{$subc->name}}</a></li>
+                                </div>
+                              <!-- </div> -->
+                                
                               @endif
                             @endforeach
                         
                           </ul>
+              
 
                   @endif
                 @endforeach
@@ -121,3 +127,27 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
   </header><!--/header-->
 
   <!-- <div class = "parent"> -->
+
+<!-- <script src="/js/frontend_js/anime.js"></script>
+<style>
+  #Incense{
+    width: 10px;
+    height: 5px;
+    display: inline;
+    border-radius: 20px;
+    background-color: #F5F5F5;
+    position: absolute;
+    top: 45rem;
+    left: 40px;
+  }
+</style>     
+
+<!-- <div id = "box"></div> -->
+<!--   <script>
+    anime({
+      targets: "#Incense",
+      duration: 100000,
+      translateX: 300,
+    });
+  </script> -->
+

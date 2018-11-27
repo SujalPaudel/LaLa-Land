@@ -28,7 +28,7 @@
                   <div class="col-sm-6">
                     <h1><span>{{$banner->title}}</h1>
                     <p>{{$banner->content}}</p>
-                    <a href = "{{url('/category/'.$banner->link)}}"><button type="button" class="btn btn-default get">Get it now</button></a>
+                    <a href = "{{url('/category/'.$banner->link)}}" class="btn btn-default get">Get it Now</a>
                   </div>
                   <div class = "col-sm-6">
                     <img src = "{{asset('images/frontend_images/banners/'.$banner->image)}}">
@@ -68,7 +68,7 @@
                 <div class="product-image-wrapper">
                   <div class="single-products">
                       <div class="productinfo text-center">
-                        <img src="{{asset('images/backend_images/products/small_images/'.$product->image)}}" alt="" />
+                        <img src="{{asset('images/ramlal.jpg')}}" alt="" />
                         <h2>Rs {{ $product->price }}</h2>
                         <p>{{$product->product_name}}</p>
                         <a href="{{url('/product/'.$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pin to cart</a>

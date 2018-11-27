@@ -59,3 +59,5 @@ $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
     </div>
     
   </footer><!--/Footer-->
+
+

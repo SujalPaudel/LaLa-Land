@@ -311,3 +311,5 @@ function selectPaymentMethod(){
 		alert("Please select a payment method");
 	}
 }
+
+
