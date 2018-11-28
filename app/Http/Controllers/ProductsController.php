@@ -59,7 +59,7 @@ class ProductsController extends Controller
 
             Image::make($image_tmp)->save($large_image_path);
             Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
-            Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+            Image::make($image_tmp)->resize(445, 297)->save($small_image_path);
 
             // store image in products table
             $product->image = $filename;
@@ -298,7 +298,7 @@ class ProductsController extends Controller
             $small_image_path = 'images/backend_images/products/small_images/'.$fileName;
             Image::make($file)->save($large_image_path);
             Image::make($file)->resize(600,600)->save($medium_image_path);
-            Image::make($file)->resize(300,300)->save($small_image_path);
+            Image::make($file)->resize(445, 297)->save($small_image_path);
             $image->image = $fileName;
             $image->product_id = $data['product_id'];
             $image->save();

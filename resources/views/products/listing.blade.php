@@ -89,7 +89,6 @@
                         <img src="{{asset('images/backend_images/products/small_images/'.$product->image)}}" alt="" />
                         <h2>Rs {{ $product->price }}</h2>
                         <p>{{$product->product_name}}</p>
-                        <a href="{{url('product/'.$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                       </div>
             <!--           <div class="product-overlay">
                         <div class="overlay-content">

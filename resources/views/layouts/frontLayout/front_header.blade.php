@@ -49,14 +49,118 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
     <div class="header-middle"><!--header-middle-->
       <div class="container">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="logo pull-left">
               <a href="{{url('/')}}"><img src="{{asset('images/frontend_images/logo.jpg')}}" width = "150px"alt="" /></a>
             </div>
           </div>
 
+          <div class = "col-sm-6">
+          <div class = "main-banner" id = "main-banner">
+            <div class = "imgban" id = "imgban3">
+            </div>
 
-          <div class="col-sm-8">
+            <div class = "imgban" id = "imgban2">
+            </div>
+
+            <div class = "imgban" id = "imgban1">
+            </div>
+
+          </div>
+          </div>
+
+          <script>
+            var bannerStatus = 1;
+            var bannerTimer = 3000;
+
+            window.onload = function(){
+              bannerLoop();
+            }
+
+            var startBannerLoop = setInterval(function(){
+              bannerLoop();              
+            }, bannerTimer); // the bannerloop function needs to be called every 4000ms so that the else if statement executes
+
+            document.getElementById("main-banner").onmouseenter = function(){
+              clearInterval(startBannerLoop);
+            } // when you enter the mouse over main banner the startBannerLoop continuity will be broken means no function call
+
+            document.getElementById("main-banner").onmouseleave = function(){
+              startBannerLoop = setInterval(function(){
+                bannerLoop();              
+              }, bannerTimer); 
+            } // when you leave the mouse the continuity will begin again
+
+
+
+            function bannerLoop(){
+              if(bannerStatus === 1){
+                document.getElementById('imgban2').style.opacity = "0";                
+
+                setTimeout(function(){
+
+                  document.getElementById('imgban1').style.right = "0px";
+                  document.getElementById('imgban1').style.zIndex = "1000";
+                  document.getElementById('imgban2').style.right = "-1200px";
+                  document.getElementById('imgban2').style.zIndex = "1500";
+                  document.getElementById('imgban3').style.right = "1200px";
+                  document.getElementById('imgban3').style.zIndex = "500";
+                }, 500); // how much of second must it pass before we run all the above code
+
+                setTimeout(function(){
+                  document.getElementById('imgban2').style.opacity = "1";              
+                }, 1000);
+
+                bannerStatus = 2;
+              }
+              else if(bannerStatus === 2){
+                document.getElementById('imgban3').style.opacity = "0";                
+
+                setTimeout(function(){
+
+                  document.getElementById('imgban2').style.right = "0px";
+                  document.getElementById('imgban2').style.zIndex = "1000";
+                  document.getElementById('imgban3').style.right = "-1200px";
+                  document.getElementById('imgban3').style.zIndex = "1500";
+                  document.getElementById('imgban1').style.right = "1200px";
+                  document.getElementById('imgban1').style.zIndex = "500";
+                }, 500);
+
+                setTimeout(function(){
+                  document.getElementById('imgban3').style.opacity = "1";              
+                }, 1000);
+
+                bannerStatus = 3;
+
+              }
+
+              else if(bannerStatus === 3){
+                document.getElementById('imgban1').style.opacity = "0";                
+
+                setTimeout(function(){
+
+                  document.getElementById('imgban3').style.right = "0px";
+                  document.getElementById('imgban3').style.zIndex = "1000";
+                  document.getElementById('imgban1').style.right = "-1200px";
+                  document.getElementById('imgban1').style.zIndex = "1500";
+                  document.getElementById('imgban2').style.right = "1200px";
+                  document.getElementById('imgban2').style.zIndex = "500";
+                }, 500);
+
+                setTimeout(function(){
+                  document.getElementById('imgban1').style.opacity = "1";              
+                }, 1000);
+
+                bannerStatus = 1;
+
+              }              
+            }
+
+          
+          </script>
+
+
+          <div class="col-sm-3">
             <div class="shop-menu pull-right">
               <ul class="nav navbar-nav">
                 <!-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->

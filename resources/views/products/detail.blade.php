@@ -1,6 +1,10 @@
 @extends('layouts.frontLayout.front_design')
 @section('content')
 
+<script src = "{{asset('/js/frontend_js/jquery.js')}}"></script>
+
+<script src = "{{asset('/js/frontend_js/best_zoom.js')}}"></script>
+
 <section>
   <div class="container">
     <div class="row">
@@ -15,29 +19,47 @@
 
         <div class="product-details"><!--product-details-->
           <div class="col-sm-5">
-            <div class="view-product">
-              <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
 
-              <!--Post hover!-->
-                <a href = "{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}"> 
+            <img id = "zoom_01" src="{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}" data-zoom-image = "{{asset('images/backend_images/products/large_images/'.$productDetails->image)}}" width="100%" />
 
-              <!--Pre Hover !-->
-                <img src="{{asset('images/backend_images/products/small_images/'.$productDetails->image)}}" class = "mainImage" alt=""/>
-              </div>
+
+                
+            <div class = "row" id = "thumb-image">
+              @foreach($productAltImages as $altImages)
+                <div class = "col-sm-3">
+
+
+                  <a href="#" data-image = "{{asset('images/backend_images/products/small_images/'.$altImages->image)}}"
+                                    data-zoom-image = "{{asset('images/backend_images/products/large_images/'.$altImages->image)}}">
+
+
+                     <img id="img_01" src = "{{asset('images/backend_images/products/small_images/'.$altImages->image)}}"
+                               height="100px">
+
+                  </a>
+
+                </div>
+              @endforeach
+
+            </div>             
+
+            <script>
+              $('#zoom_01').elevateZoom({gallery: 'thumb-image',
+                                         cursor: 'pointer',
+                                         galleryActiveClass: 'active',
+                                         imageCrossfade: true,
+                                         tint: true,
+                                         tintColour: '#999', 
+                                         tintOpacity: 0.5,
+                                         scrollZoom: true});
+            </script>
+
+            <hr>
+
+            <div class = "col-sm-5" style="margin-top: 10px;">
+              Ramlal in the house
             </div>
-            <div id="similar-product" class="carousel slide" data-ride="carousel">
-              
-                <!-- Wrapper for slides -->
-                  <div class="carousel-inner">
-                  <div class="item active thumbnails yes-thumbnails">
-                    @foreach($productAltImages as $altimage)
-                      <a href="{{asset('/images/backend_images/products/medium_images/'.$altimage->image)}}">
-                       <img src="{{asset('/images/backend_images/products/medium_images/'.$altimage->image)}}" class = "changingImages" style="width:80px; cursor:pointer;"alt="">
-                      </a>
-                    @endforeach
-                  </div>
-                  </div>
-            </div>
+
 
           </div>
           <div class="col-sm-7">

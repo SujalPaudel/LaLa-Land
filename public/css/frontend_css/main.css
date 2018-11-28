@@ -279,7 +279,7 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
+  background-image: url(../../images/frontend_images/home/searchicon.png);
   background-repeat: no-repeat;
   background-position: 130px;
 }
@@ -763,7 +763,7 @@ ul.sub-menu {
 }
 
 .get:hover {
-  background-image: linear-gradient(to right bottom, #7ed56f, #55c57a);
+  background-image: linear-gradient(to right bottom, #5643fa, #2998ff);
   border-radius: 10px;
 }
 
@@ -1091,7 +1091,7 @@ h2.title {
 }
 
 .add-to-cart:hover {
-  background:linear-gradient(to right bottom, #5643fa, #2998ff );
+  background:linear-gradient(to right bottom, #5643fa, #2998ff);
   border: 0 none;
   border-radius: 7px;
   color: #FFFFFF;
@@ -1146,7 +1146,7 @@ h2.title {
   border-radius: 0;
   color: #B3AFA8;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Bree Serif', sans-serif;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -1309,8 +1309,7 @@ h2.title {
 */
 .view-product {
   border: 1px solid #F7F7F0;
-  height: 380px;
-  width: 100%;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -1335,6 +1334,10 @@ h2.title {
   display: inline-block;
   margin-left: 15px;
 }
+/*
+.carousel-inner{
+  width: 20rem;
+}*/
 
 .item-control {
   position: absolute;
@@ -2818,3 +2821,52 @@ position: absolute;
 /*.navbar-nav li ul.sub-menu li a:hover{
     color: red;
 }*/
+
+/* For the topmost banner */
+
+.main-banner {
+  margin: 0 auto;
+  width: 100%;
+  height: 12rem;
+  background-color: #f3f3f3;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  border-style: solid 10px;
+}
+
+.main-banner .imgban {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 15px;  
+  top: 0px;
+  transition: all ease-in-out 500ms;
+  -webkit-transition: all ease-in-out 500ms;
+  -moz-transition: all ease-in-out 500ms;
+  -o-transition: all ease-in-out 500ms;
+}
+
+
+.main-banner #imgban3 {
+    background-image: url(../../images/frontend_images/top_banner/swayambhu.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main-banner #imgban2 {
+    background-image: url(../../images/frontend_images/top_banner/colors.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main-banner #imgban1 {
+    background-image: url(../../images/frontend_images/top_banner/pashupati.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+

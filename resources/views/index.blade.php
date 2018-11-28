@@ -43,11 +43,12 @@
             <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
               <i class="fa fa-angle-right"></i>
             </a>
-          </div>
+        
           
         </div>
       </div>
     </div>
+  </div>
   </section><!--/slider-->
   
 <style>
@@ -68,7 +69,7 @@
                 <div class="product-image-wrapper">
                   <div class="single-products">
                       <div class="productinfo text-center">
-                        <img src="{{asset('images/ramlal.jpg')}}" alt="" />
+                        <img src="{{asset('images/backend_images/products/large_images/'.$product->image)}}" alt="" />
                         <h2>Rs {{ $product->price }}</h2>
                         <p>{{$product->product_name}}</p>
                         <a href="{{url('/product/'.$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pin to cart</a>
@@ -77,7 +78,7 @@
                 </div>
               </div>
             @endforeach
-            
+
           </div>   
         </div>
       </div>
