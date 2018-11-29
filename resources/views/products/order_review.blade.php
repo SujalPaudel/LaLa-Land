@@ -3,7 +3,7 @@
 
 <section id="form" style = "margin-top: 20px;margin-bottom: 1rem;""><!--form-->
   <div class="container">
-    @include('repetition_alert');  
+    @include('repetition_alert')
     <div class = "breadcrumbs">
     <ol class = "breadcrumb">
       <li><a href = "#">Home</a></li>

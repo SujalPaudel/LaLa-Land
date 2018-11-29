@@ -71,7 +71,7 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
           <script>
             var bannerStatus = 1;
-            var bannerTimer = 3000;
+            var bannerTimer = 4000;
 
             window.onload = function(){
               bannerLoop();
@@ -101,9 +101,9 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
                   document.getElementById('imgban1').style.right = "0px";
                   document.getElementById('imgban1').style.zIndex = "1000";
-                  document.getElementById('imgban2').style.right = "-1200px";
+                  document.getElementById('imgban2').style.right = "-540px";
                   document.getElementById('imgban2').style.zIndex = "1500";
-                  document.getElementById('imgban3').style.right = "1200px";
+                  document.getElementById('imgban3').style.right = "540px";
                   document.getElementById('imgban3').style.zIndex = "500";
                 }, 500); // how much of second must it pass before we run all the above code
 
@@ -120,9 +120,9 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
                   document.getElementById('imgban2').style.right = "0px";
                   document.getElementById('imgban2').style.zIndex = "1000";
-                  document.getElementById('imgban3').style.right = "-1200px";
+                  document.getElementById('imgban3').style.right = "-540px";
                   document.getElementById('imgban3').style.zIndex = "1500";
-                  document.getElementById('imgban1').style.right = "1200px";
+                  document.getElementById('imgban1').style.right = "540px";
                   document.getElementById('imgban1').style.zIndex = "500";
                 }, 500);
 
@@ -141,11 +141,11 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
                   document.getElementById('imgban3').style.right = "0px";
                   document.getElementById('imgban3').style.zIndex = "1000";
-                  document.getElementById('imgban1').style.right = "-1200px";
+                  document.getElementById('imgban1').style.right = "-540px";
                   document.getElementById('imgban1').style.zIndex = "1500";
-                  document.getElementById('imgban2').style.right = "1200px";
+                  document.getElementById('imgban2').style.right = "540px";
                   document.getElementById('imgban2').style.zIndex = "500";
-                }, 500);
+                },500);
 
                 setTimeout(function(){
                   document.getElementById('imgban1').style.opacity = "1";              
@@ -221,9 +221,11 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
           </div>
           <div class="col-sm-3">
-            <div class="search_box pull-right">
-              <input type="text" placeholder="Search"/>
-            </div>
+            <form action = "{{url('search')}}" method="post">{{ csrf_field() }}
+              <div class="search_box pull-right">
+                <input type="text" placeholder="Search" name = "search_box"/>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -231,27 +233,4 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
   </header><!--/header-->
 
   <!-- <div class = "parent"> -->
-
-<!-- <script src="/js/frontend_js/anime.js"></script>
-<style>
-  #Incense{
-    width: 10px;
-    height: 5px;
-    display: inline;
-    border-radius: 20px;
-    background-color: #F5F5F5;
-    position: absolute;
-    top: 45rem;
-    left: 40px;
-  }
-</style>     
-
-<!-- <div id = "box"></div> -->
-<!--   <script>
-    anime({
-      targets: "#Incense",
-      duration: 100000,
-      translateX: 300,
-    });
-  </script> -->
 

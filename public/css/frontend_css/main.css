@@ -77,7 +77,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: linear-gradient(to right bottom, #7ed56f, #55c57a) repeat scroll 0 0 #F0F0E9;
+  background: linear-gradient(to right bottom,#ffc450, #ff8008);
 }
 
 /*.contactinfo ul li:first-child{
@@ -311,7 +311,7 @@ ul.sub-menu {
   top:31px;
 	list-style: none;
 	padding: 0;
-	margin: 0;
+	margin: -2px;
 	width: 775px;
   border-radius: 25px;
   height: 400px;
@@ -329,11 +329,13 @@ ul.sub-menu {
 
 .Incense {
   background-image: linear-gradient(to right bottom, 
-                                    rgba(198, 47, 222, 0.2),
-                                    rgba(229, 152, 36, 0.4),
-                                    rgba(240,216,240, 0.3)),
-                                    url('../../images/frontend_images/dropDwn_img/incense.jpg');    
+                                    rgba(135, 168, 246, 0.7),
+                                    rgba(240,216,240, 0.6)),
+                                    url('../../images/frontend_images/dropDwn_img/incense.jpg');
+
+      
   left: 0px;
+
 }
 
 
@@ -348,35 +350,35 @@ ul.sub-menu {
 
 .Mallet {
   background-image: linear-gradient(to right bottom, 
-                                    rgba(31, 76, 182, 0.7),
-                                    rgba(209, 173, 28, 0.5)),
+                                    rgba(254,95,117,0.49),
+                                    rgba(252,152,66,0.6)),
                                     url('../../images/frontend_images/dropDwn_img/mallet.jpg');    
   left: -233.01px;
 }
 
 .Gongs {
-  background-image: linear-gradient(to right bottom, 
-                                    rgba(242,238,242, 0.7),
-                                    rgba(240,216,240, 0.3)),
-                                    url('../../images/frontend_images/dropDwn_img/ramlal.jpg');   
+  background-image: url('../../images/frontend_images/dropDwn_img/ramlal.jpg');   
 
   left: -328.78px;
 }
 
 .Antique {
   background-image: linear-gradient(to right bottom, 
-                                    rgba(244, 198, 44, 0.5),
+                                    rgba(255, 199, 25, .6),
                                     rgba(229, 152, 36, 0.4),
-                                    rgba(209, 173, 28, 0.5)),
+                                    rgba(191,3,59, 0.2)),
                                     url('../../images/frontend_images/dropDwn_img/antique.jpg');
 
   left: -427.37px;
 }
 
 .Statues {
-  background-image: linear-gradient(to right bottom, red, #f06d06, rgb(255, 255, 0), green),
+  display: block;
+  background-image: url('../../images/frontend_images/dropDwn_img/stupa.jpg');
 
-                                    url('../../images/frontend_images/dropDwn_img/antique.jpg');
+  width: 100%;
+
+
   left: -647.2px;
 }
 
@@ -405,10 +407,9 @@ ul.sub-menu {
 
 .Beauty {
   background-image: linear-gradient(to right bottom, 
-                                    rgba(198, 47, 222, 0.2),
-                                    rgba(135, 168, 246, 0.4),
-                                    rgba(254, 185, 66, 0.5),
-                                    rgba(240,216,240, 0.3)),
+                                    rgba(240, 231, 3, .5),
+                                  
+                                    rgba(179, 223, 161, .5)),
                                     url('../../images/frontend_images/dropDwn_img/beauty.jpg');
   /*background-repeat: no-repeat;*/
   /*background-size: 100% 100%; */
@@ -670,7 +671,7 @@ ul.sub-menu {
 }
 
 .footer-bottom {
-  background: #D6D6D0;
+  background: linear-gradient(to right bottom, #D2A813, #000000);
   padding-top: 10px;
   margin-bottom: -40px;
 }
@@ -1625,7 +1626,7 @@ h2.title {
 .login-form form button, .signup-form form button {
   background: linear-gradient(to right bottom,#2998ff,  #5643fa);
   border: medium none;
-  border-radius: 0;
+  border-radius: 15px;
   color: #FFFFFF;
   display: block;
   font-family: 'Roboto', sans-serif;
@@ -2807,7 +2808,7 @@ position: absolute;
 }
 
 .hamba {
-  background: linear-gradient(#5643fa, #2998ff);
+  background: linear-gradient(#434343, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -2868,5 +2869,4 @@ position: absolute;
     background-position: center;
     background-repeat: no-repeat;
 }
-
 

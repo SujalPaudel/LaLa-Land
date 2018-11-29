@@ -83,11 +83,17 @@
                   <br>
                   <button class = "btn btn-default increase-pins" type = "button" id = "increase">+</button>    
 
+<!--                   <input type = "text" id = "ramlal" value="1">
+ -->
+                  
+
                   <div class = "detail-cart">
                     <button type="Submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
                     Add to cart</button>   
                   </div>
-                </div>           
+                </div> 
+
+
                 <div class = "vdo">
                   <iframe src="http://www.youtube.com/embed/W7qWa52k-nE"
                           width="100%" height="130%" frameborder="0" allowfullscreen></iframe>

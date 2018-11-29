@@ -58,6 +58,10 @@ Route::get('/about-us', 'TitlebarController@displayAboutPage');
 
 Route::get('/our-artist', 'TitlebarController@displayOurArtist');
 
+// Route about searching product
+
+Route::match(['get', 'post'], '/search', 'ProductsController@searchProduct');
+
 // The grouped routes are protected by the middleware
 // All routes after being logged in
 

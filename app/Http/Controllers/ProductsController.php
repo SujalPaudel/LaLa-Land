@@ -706,6 +706,15 @@ class ProductsController extends Controller
     // echo("Ramlal");
     return view('orders.user_order_history')->with(compact('orderDetails'));
   } 
+
+  // The search functionality
+
+  public function searchProduct(Request $request){
+    $data = $request->all();
+
+    // echo "<pre>";print_r($data['search_box']);die;
+    $search_data = 
+  }
 }
 
 

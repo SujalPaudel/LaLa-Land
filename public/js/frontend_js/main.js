@@ -67,37 +67,6 @@ $(document).ready(function(){
 });
 
 
-	// Image zoom with hover effect
-
-	// Instantiate EasyZoom instances
-	var $easyzoom = $('.easyzoom').easyZoom();
-
-	// Setup thumbnails example
-	var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
-
-	$('.thumbnails').on('click', 'a', function(e) {
-		var $this = $(this);
-
-		e.preventDefault();
-
-		// Use EasyZoom's `swap` method
-		api1.swap($this.data('standard'), $this.attr('href'));
-	});
-
-	// Setup toggles example
-	var api2 = $easyzoom.filter('.easyzoom--with-toggle').data('easyZoom');
-
-	$('.toggle').on('click', function() {
-		var $this = $(this);
-
-		if ($this.data("active") === true) {
-			$this.text("Switch on").data("active", false);
-			api2.teardown();
-		} else {
-			$this.text("Switch off").data("active", true);
-			api2._init();
-		}
-	});
 
 
 	// Jquery validations on user login/register form
@@ -304,12 +273,10 @@ $().ready(function(){
 
 });
 
-function selectPaymentMethod(){
-	if($('#paypal').is(':checked')){
-		alert("test");
-	}else{
-		alert("Please select a payment method");
-	}
-}
 
+$('input:radio[name = "payment_method"][value = "PayPal"]').prop('checked', true);
+
+$("#alert").on('click', function(){
+	alert('Rmalla');
+});
 
