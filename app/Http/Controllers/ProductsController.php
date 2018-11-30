@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Exceptions;
+
+
 use Auth;
 use App\Category;
 use App\Products;
@@ -17,7 +20,6 @@ use App\OrdersProduct;
 use Image;
 use DB;
 use Session;
-
  
 
 class ProductsController extends Controller
@@ -713,8 +715,27 @@ class ProductsController extends Controller
     $data = $request->all();
 
     // echo "<pre>";print_r($data['search_box']);die;
-    $search_data = 
+    $search_data = $data['search_box'];
+
+  
+      $search_result = DB::table('products')
+
+      ->where('products.product_name', 'like', '%' . $search_data . '%') // for likelihood of similar lexiums
+      ->where('products.status', 1)
+      ->get();
+  
+
+    // echo "<pre>";print_r($search_result);die;
+
+    if(!$search_result->isEmpty()){
+      return view('custom_search')->with(compact('search_result'));
+    }
+
+    else{
+      return view('404');
+    }
   }
 }
 
 
+// when doing get request we cannot get the emptiness because the instance of Illuminate\Support\Collection is always returned

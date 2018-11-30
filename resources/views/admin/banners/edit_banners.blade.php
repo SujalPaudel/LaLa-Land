@@ -1,5 +1,5 @@
-@extends('layouts.adminLayout.admin_design');
-@section('content');
+@extends('layouts.adminLayout.admin_design')
+@section('content')
 
 <div id="content">
   <div id="content-header">
@@ -37,6 +37,19 @@
                   <input type="text" name="title" id="title" value = "{{$bannerDetails->title}}" required autocomplete="off">
                 </div>
               </div>
+
+              <div class = "control-group">
+                <label class="control-label">Content</label>
+                <div class="controls">
+                  <textarea id = "mitwa" name = "content" required autocomplete="off">{{ $bannerDetails->content }}</textarea>                  
+                </div>
+              </div>  
+
+              <script>
+                document.getElementById('mitwa').style.height='100px';
+
+                document.getElementById('mitwa').style.fontSize='10pt';
+              </script>              
 
               <div class = "control-group">
                 <label class="control-label">Link</label>

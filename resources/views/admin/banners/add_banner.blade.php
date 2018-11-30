@@ -1,5 +1,5 @@
-@extends('layouts.adminLayout.admin_design');
-@section('content');
+@extends('layouts.adminLayout.admin_design')
+@section('content')
 
 <div id="content">
   <div id="content-header">
@@ -41,7 +41,7 @@
               <div class = "control-group">
                 <label class="control-label">Content</label>
                 <div class="controls">
-                  <input style="font-size:18pt;height:42px;width:200px;" type="text" name = "content" required autocomplete="off">
+                  <textarea name = "content" required autocomplete="off"></textarea>
                 </div>
               </div>              
 

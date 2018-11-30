@@ -30,17 +30,17 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
                 <li><a>Our Collections</a></li>
                 <li><a>Meet Us</a></li>
               </ul>
+            </div>
           
-          
-            <div class="social-icons">
-              <ul class="nav navbar-nav" style="float: right;">
+            <div class="social-icons" style="margin-left: 44%" >
+              <ul class="nav navbar-nav">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
                 <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
               </ul>
-            </div></div>
+            </div>
           </div>
         </div>
       </div>

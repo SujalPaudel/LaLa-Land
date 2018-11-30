@@ -5,7 +5,7 @@
   <section id="slider"><!--slider-->
     <div class="container">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" style="height: 120%;">
           <div id="slider-carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -70,7 +70,7 @@
                   <div class="single-products">
                       <div class="productinfo text-center">
                         <img src="{{asset('images/backend_images/products/large_images/'.$product->image)}}" alt="" />
-                        <h2>Rs {{ $product->price }}</h2>
+                        <h2>$ {{ $product->price }}</h2>
                         <p>{{$product->product_name}}</p>
                         <a href="{{url('/product/'.$product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pin to cart</a>
                       </div>
