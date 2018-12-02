@@ -24,7 +24,13 @@
             {{$userDetails->city}}
           </div>
           <div class = "form-group">
-            {{$userDetails->khalti_number}}
+            {{$userDetails->zip_code}}
+          </div>
+          <div class = "form-group">
+            {{$userDetails->state}}
+          </div>          
+          <div class = "form-group">
+            {{$userDetails->country}}
           </div>          
           <div class = "form-group">
             {{$userDetails->mobile}}
@@ -46,7 +52,13 @@
             {{$shippingDetails->city}}
           </div>
           <div class = "form-group">
-           {{$shippingDetails->khalti_number}}
+           {{$shippingDetails->zip_code}}
+          </div>           
+          <div class = "form-group">
+           {{$shippingDetails->state}}
+          </div>           
+          <div class = "form-group">
+           {{$shippingDetails->country}}
           </div>           
           <div class = "form-group">          
             {{$shippingDetails->mobile}}  

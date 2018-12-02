@@ -26,12 +26,24 @@
                 <input name = "name" id = "name" type="text" placeholder="Name" value = "{{$userDetails->name}}"/>
                 <input name = "address" id = "address" type="text" placeholder="Address" value = "{{$userDetails->address}}" />
                 <input name = "city" id = "city" type="text" placeholder="City" value = "{{$userDetails->city}}" />
+
                 <select id = "state" name = "state" style="margin-bottom: 1rem; padding:1rem; display: inline-block;">
-                @foreach($states as $state)
-                  <option value = "{{$state->state_name}}" @if($state->state_name == $userDetails->state) selected @endif>{{$state->state_name}}</option>
-                @endforeach
+                  <option value = "">Select State</option>
+                    @foreach($states as $state)
+                      <option value = "{{$state->abbr}}" @if($userDetails->state == $state->abbr) selected = "{{$userDetails->state}}" @endif>{{$state->abbr}}</option>
+                    @endforeach
                 </select>
-                <input name = "khalti_number" id = "khalti_number" type="text" placeholder="Khalti Number" value = "{{$userDetails->khalti_number}}"/>
+
+              
+                <select id = "country" name= "country" style="margin-bottom: 1rem; padding:1rem; display: inline-block;">
+                  <option value="">Select Country</option>
+                  @foreach($countries as $country)
+                    <option value="{{$country->country_name}}" @if($userDetails->country == $country->country_name) selected = "{{$userDetails->country}}" @endif>{{$country->country_name}}</option>
+                  @endforeach
+                </select>
+
+
+
                 <input name = "mobile" id = "mobile" type="text" placeholder="Mobile" value = "{{$userDetails->mobile}}"/>
                 <button type="submit" class="btn btn-default">Signup</button>
               </form>            

@@ -538,12 +538,17 @@ class ProductsController extends Controller
     $user_id = Auth::user()->id;
     $user_email = Auth::user()->email;
     $userDetails = User::find($user_id);
+    $userDetails = json_decode(json_encode($userDetails));
+    // echo "<pre>";print_r($userDetails);die;
     $shippingDetails = array();
 
     // Check if the delevering address exists
     $shippingCount = DeliveryAddress::where('user_id', $user_id)->count();
     if($shippingCount>0){
       $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
+      // $shippingDetails = json_decode(json_encode($shippingDetails));
+      // echo "<pre>";print_r($shippingDetails);die;      
+
     }
 
     // get the session id of the current user
@@ -551,18 +556,26 @@ class ProductsController extends Controller
     $session_id = Session::get('session_id');
     DB::table('cart')->where('session_id', $session_id)->update(['user_email'=>$user_email]);
 
+    // $shippingDetails = json_decode(json_encode($shippingDetails));
+    // echo "<pre>";print_r($shippingDetails);die;
 
     if($request->isMethod('post')){
       $data = $request->all();
       if(empty($data['billing_name']) ||
          empty($data['billing_address']) ||
          empty($data['billing_city']) ||
-         empty($data['billing_khalti']) ||
+         empty($data['billing_zip']) ||
+         empty($data['billing_state']) ||
+         empty($data['billing_country']) ||
          empty($data['billing_mobile']) ||
+
          empty($data['shipping_name']) ||
          empty($data['shipping_address']) ||
          empty($data['shipping_city']) ||
-         empty($data['shipping_khalti']) ||
+         empty($data['shipping_zip']) ||
+         empty($data['shipping_state']) ||
+         empty($data['shipping_country']) ||
+
          empty($data['shipping_mobile'])){
         return redirect()->back()->with('flash_message_error', 'Please fill all the fields to checkout');
       }
@@ -572,7 +585,9 @@ class ProductsController extends Controller
       User::where('id', $user_id)->update(['name'=>$data['billing_name'],
                                             'address'=>$data['billing_address'],
                                             'city'=>$data['billing_city'],
-                                            'khalti_number'=>$data['billing_khalti'],
+                                            'zip_code'=>$data['billing_zip'],
+                                            'state'=>$data['billing_state'],
+                                            'country'=>$data['billing_country'],
                                             'mobile'=>$data['billing_mobile']]);
 
       if($shippingCount>0){
@@ -580,7 +595,9 @@ class ProductsController extends Controller
         DeliveryAddress::where('user_id', $user_id)->update(['name'=>$data['shipping_name'],
                                                              'address'=>$data['shipping_address'],
                                                              'city'=>$data['shipping_city'],
-                                                             'khalti_number'=>$data['shipping_khalti'],
+                                                             'zip_code'=>$data['shipping_zip'],
+                                                             'state'=>$data['shipping_state'],
+                                                             'country'=>$data['shipping_country'],
                                                              'mobile'=>$data['shipping_mobile']]);
       }else{
         // Add new shipping Address
@@ -590,7 +607,9 @@ class ProductsController extends Controller
         $deliver->name = $data['shipping_name'];
         $deliver->address = $data['shipping_address'];
         $deliver->city = $data['shipping_city'];
-        $deliver->khalti_number = $data['shipping_khalti'];
+        $deliver->zip_code = $data['shipping_zip'];
+        $deliver->state = $data['shipping_state'];
+        $deliver->country = $data['shipping_country'];
         $deliver->mobile = $data['shipping_mobile'];
         $deliver->save();
       }
@@ -646,7 +665,9 @@ class ProductsController extends Controller
       $order->name = $deliverDetails->name;
       $order->address = $deliverDetails->address;
       $order->city = $deliverDetails->city;
-      $order->khalti_number = $deliverDetails->khalti_number;
+      $order->zip_code = $deliverDetails->zip_code;
+      $order->state = $deliverDetails->state;
+      $order->country = $deliverDetails->country;
       $order->mobile = $deliverDetails->mobile;
       $order->coupon_code = $couponCode;
       $order->coupon_amount = $data['couponAmount'];

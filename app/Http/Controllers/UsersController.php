@@ -10,6 +10,7 @@ use App\State;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use App\Country;
 
 class UsersController extends Controller
 {
@@ -86,7 +87,14 @@ class UsersController extends Controller
     public function account(Request $request){
       $user_id = Auth::user()->id;
       $userDetails = User::find($user_id);
+      $userDetails = json_decode(json_encode($userDetails));
+      // echo '<pre>';print_r($userDetails);die;
+      $countries = Country::get();
+      // $countries = json_decode(json_encode($countries));
+
+      // echo '<pre>';print_r($countries);die;
       $states = State::get();
+    
 
       if($request->isMethod('post')){
         $data = $request->all();
@@ -96,12 +104,13 @@ class UsersController extends Controller
         $user->address = $data['address'];
         $user->city = $data['city'];
         $user->state = $data['state'];
-        $user->khalti_number = $data['khalti_number'];
+        $user->country = $data['country'];
+        // $user->country = $data['zipcode'];
         $user->mobile = $data['mobile'];
         $user->save();
         return redirect()->back()->with('flash_message_success', 'Your Account Credentials has been Updated !!');
       }
-      return view('users.account')->with(compact('states', 'userDetails'));
+      return view('users.account')->with(compact('countries', 'states', 'userDetails'));
     }    
 
     public function logout(){

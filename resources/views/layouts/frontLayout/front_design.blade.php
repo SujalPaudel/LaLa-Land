@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Sujal Paudel">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Home | E-Shopper</title>
+    <title>Harmonic Grace</title>
     <link href="{{asset('css/frontend_css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/frontend_css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/frontend_css/prettyPhoto.css')}}" rel="stylesheet">

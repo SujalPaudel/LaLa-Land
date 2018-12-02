@@ -243,13 +243,17 @@ $().ready(function(){
 			$("#shipping_name").val($("#billing_name").val());
 			$("#shipping_address").val($("#billing_address").val());
 			$("#shipping_city").val($("#billing_city").val());
-			$("#shipping_khalti").val($("#billing_khalti").val());
+			$("#shipping_zip").val($("#billing_zip").val());
+			$("#shipping_state").val($("#billing_state").val());
+			$("#shipping_country").val($("#billing_country").val());
 			$("#shipping_mobile").val($("#billing_mobile").val());
 		}else{
 			$("#shipping_name").val('');
 			$("#shipping_address").val('');
 			$("#shipping_city").val('');
-			$("#shipping_khalti").val('');
+			$("#shipping_zip").val('');
+			$("#shipping_state").val('');
+			$("#shipping_country").val('');
 			$("#shipping_mobile").val('');			
 		}
 	})
