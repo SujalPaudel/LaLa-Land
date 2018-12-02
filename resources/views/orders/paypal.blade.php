@@ -31,24 +31,30 @@
 
       ?>
      
-      <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="thesujal17-facilitator@gmail.com">
+        <input type="hidden" name="business" value="thesujal17@gmail.com">
 
-        <input type="text" name="item_name" value="{{Session::get('order_id')}}">
+        <input type="hidden" name="item_name" value="{{Session::get('order_id')}}">
 
-        <input type="text" name="currency_code" value="USD">
+        <input type="hidden" name="currency_code" value="USD">
 
-        <input type="text" name="amount" value="{{ Session::get('grand_total') }}">
+        <input type="hidden" name="amount" value="{{ Session::get('grand_total') }}">
 
-        <input type="text" name="first_name" value="{{$nameArr[0]}}">
-        <input type="text" name="last_name" value="{{ $nameArr[1] }}">
-        <input type="text" name="address1" value="{{ $orderDetails->address }}">
-        <input type="text" name="address2" value="">
-        <input type="text" name="city" value="{{ $orderDetails->city }}">
-        <input type="text" name="state" value="{{ $orderDetails->state }}">
-        <input type="text" name="zip" value="{{ $orderDetails->zip_code}}">
-        <input type="text" name="email" value="{{ $orderDetails->user_email }}">
+        <input type="hidden" name="first_name" value="{{$nameArr[0]}}">
+        <input type="hidden" name="last_name" value="{{ $nameArr[1] }}">
+        <input type="hidden" name="address1" value="{{ $orderDetails->address }}">
+        <input type="hidden" name="address2" value="">
+        <input type="hidden" name="city" value="{{ $orderDetails->city }}">
+        <input type="hidden" name="state" value="{{ $orderDetails->state }}">
+        <input type="hidden" name="zip" value="{{ $orderDetails->zip_code}}">
+
+
+        <input type="hidden" name="email" value="{{ $orderDetails->user_email }}">
+
+        <input type="hidden" name="return" value="{{ url('paypal/thanks') }}">
+        <input type="hidden" name="cancel_return" value="{{ url('paypal/cancel') }}">
+
         <input type="image" name="submit"
           src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
           alt="PayPal - The safer, easier way to pay online">

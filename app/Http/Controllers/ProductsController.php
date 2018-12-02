@@ -707,6 +707,17 @@ class ProductsController extends Controller
   //   return view('orders.thanks');
   // }
 
+  // function for returning from the paypal form
+
+  public function paypalThanks(){
+    return view('orders.thanks_paypal');
+  }
+
+  public function paypalCancel(){
+    return view('orders.paypal_cancel');
+  }
+
+
   public function paypal(){
     return view('orders.paypal');
   }
