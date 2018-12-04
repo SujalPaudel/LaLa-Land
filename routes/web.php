@@ -29,6 +29,16 @@ Route::get('/category/{url}', 'ProductsController@products');
 // Product Detail page
 Route::get('/product/{id}', 'ProductsController@product');
 
+// For the autoComplete Sessions
+
+Route::post('/autocomplete/fetch', 'ProductsController@fetch')->name('autocomplete.fetch');
+
+
+
+
+
+
+
 // For the cart
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
 

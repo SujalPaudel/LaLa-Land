@@ -114,19 +114,19 @@
           </div>
           <div class="tab-content">
             <div class="tab-pane active in" id="description">
-              <div class = "col-sm-12">
+              <div class = "col-sm-6">
                 <p>{{$productDetails->description}}</p>
               </div>
             </div>
             
             <div class="tab-pane fade" id="care" >
-              <div class = "col-sm-12">
+              <div class = "col-sm-6">
                 <p>{{$productDetails->accessories_care}}</p>
               </div>
             </div>
             
             <div class="tab-pane fade" id="delivery" >
-              <div class = "col-sm-12">
+              <div class = "col-sm-6">
                 <p>Ramlal on the house</p>
               </div>
             </div>
@@ -159,7 +159,7 @@
         </div><!--/category-tab-->
         
         <div class="recommended_items"><!--recommended_items-->
-          <h2 class="title text-center">recommended items</h2>
+          <h2 class="title text-center">You Might Also Like</h2>
           
           <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">

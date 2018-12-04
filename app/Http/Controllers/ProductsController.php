@@ -767,7 +767,26 @@ class ProductsController extends Controller
       return view('404');
     }
   }
-}
+
+  public function fetch(Request $request){
+    if($request->get('search_item')){
+      $search_item = $request->get('search_item');
+      $data = DB::table('products')
+        ->where('product_name', 'LIKE', '%{$query}%')
+        ->get();
+
+      $output = '<ul class = "dropdown-menu",
+                      style = "display:block;
+                                position: relative;">';
+
+      foreach($data as $row){
+        $output .=  '<li><a href = "#">'.$row->product_name.'</a></li>';
+      }
+       $output .= '</ul>';
+       echo $output; 
+      }
+    }
+  }
 
 
 // when doing get request we cannot get the emptiness because the instance of Illuminate\Support\Collection is always returned

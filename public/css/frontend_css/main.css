@@ -1139,6 +1139,8 @@ h2.title {
   margin: 0 0 30px;
   padding: 0;
   width: 100%;
+  transition: 1s;
+
 }
 
 .category-tab ul li a {
@@ -1149,11 +1151,13 @@ h2.title {
   font-family: 'Bree Serif', sans-serif;
   font-size: 14px;
   text-transform: uppercase;
+  /*transform: 1s;*/
 }
 
-.category-tab ul  li  a:hover{
+.category-tab ul li a:hover{
 	background: linear-gradient(to right bottom, #a73737, #7a2828);
 	color:#fff;
+  transition: 1.5s;  
 }
 
 .nav-tabs  li.active  a, .nav-tabs  li.active  a:hover, .nav-tabs  li.active  a:focus {
@@ -1441,6 +1445,7 @@ h2.title {
   margin-left: 15px;
   margin-right: 15px;
   padding-bottom: 10px;
+  border-radius: 15px;
 
 }
 .shop-details-tab .col-sm-12 {
