@@ -18,7 +18,7 @@
         @endforeach
       </div>
 
-      <div class = "col-sm-9">
+      <div class = "col-sm-12">
         @foreach($images as $image)
           <img src = "{{url('images/backend_images/aboutUs/'.$image->image)}}" height="250px;" style="margin: 10px;">
         @endforeach

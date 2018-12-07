@@ -307,8 +307,8 @@ a#scrollUp i{
 
 ul.sub-menu {
 	position: absolute;
-  /*left: 0px;*/
-  top:31px;
+  left: 0px;
+  top:60px;
 	list-style: none;
 	padding: 0;
 	margin: -2px;
@@ -333,8 +333,9 @@ ul.sub-menu {
                                     rgba(240,216,240, 0.6)),
                                     url('../../images/frontend_images/dropDwn_img/incense.jpg');
 
-      
+  position: absolute;    
   left: 0px;
+  top: 0px;
 
 }
 
@@ -344,7 +345,10 @@ ul.sub-menu {
                                     rgba(135, 168, 246, 0.7),
                                     rgba(240,216,240, 0.3)),
                                     url('../../images/frontend_images/dropDwn_img/pashmina.jpg');  
-  left: -108.2px;
+  /*left: -108.2px;*/
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
 
@@ -353,11 +357,17 @@ ul.sub-menu {
                                     rgba(254,95,117,0.49),
                                     rgba(252,152,66,0.6)),
                                     url('../../images/frontend_images/dropDwn_img/mallet.jpg');    
-  left: -233.01px;
+  /*left: -233.01px;*/
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
 .Gongs {
-  background-image: url('../../images/frontend_images/dropDwn_img/gong.jpg');   
+  background-image: linear-gradient(to right bottom,
+                                    rgba(183,93,14, 0.49),
+                                    rgba(183,150,14, 0.6)),
+                                    url('../../images/frontend_images/dropDwn_img/gong.jpg');   
 
   left: -328.78px;
 }
@@ -374,7 +384,10 @@ ul.sub-menu {
 
 .Statues {
   display: block;
-  background-image: url('../../images/frontend_images/dropDwn_img/stupa.jpg');
+  background-image: linear-gradient(to right bottom, 
+                                    rgba(255, 199, 25, .4),
+                                    rgba(255, 191, 0, 0.6)),
+                                    url('../../images/frontend_images/dropDwn_img/stupa.jpg');
 
   width: 100%;
 
@@ -670,7 +683,7 @@ ul.sub-menu {
 }
 
 .footer-bottom {
-  background: linear-gradient(to right bottom, #D2A813, #000000);
+  background: linear-gradient(to right bottom, #ed8f03, #ffb75e);
   padding-top: 10px;
   margin-bottom: -40px;
 }
@@ -696,6 +709,9 @@ ul.sub-menu {
 
 #slider {
   padding-bottom: 15px;
+}
+.carousel-indicators {
+  bottom: -11px;
 }
 
 .carousel-indicators li {
@@ -759,7 +775,7 @@ ul.sub-menu {
   font-family: 'Bree Serif', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  margin-top: 23px;
+  margin-top: 7px;
 }
 
 .get:hover {

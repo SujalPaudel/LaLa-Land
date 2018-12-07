@@ -40,7 +40,7 @@ $categories = Category::with('subcategories')->where(['parent_id'=>0])->get();
           <div class="col-sm-4">
             <div class="single-widget come-closer">
               <h2>Contact Us</h2>
-                <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                <p>Get the most recent updates from <br/>our site and be updated your self...</p>
                 <p>Email: <strong style="color: black;">info@harmonicgrace.com</strong></p>
               </form>
             </div>

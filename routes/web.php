@@ -31,12 +31,7 @@ Route::get('/product/{id}', 'ProductsController@product');
 
 // For the autoComplete Sessions
 
-Route::post('/autocomplete/fetch', 'ProductsController@fetch')->name('autocomplete.fetch');
-
-
-
-
-
+Route::post('/ramlal', 'UsersController@checkCurrentSearch');
 
 
 // For the cart

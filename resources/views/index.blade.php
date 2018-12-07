@@ -25,11 +25,15 @@
               @foreach($banners as $key => $banner)
                 <div class="item @if($key == 0) active @endif">
 
+                <div class = "sm-wrapper" style="max-height: 300px;">
                   <div class="col-sm-6">
-                    <h1><span>{{$banner->title}}</h1>
+                    <h1><span>{{$banner->title}}</span></h1>
+                    <div class = "cont_master" style="max-height: 200px;">
                     <p>{{$banner->content}}</p>
+                    </div>
                     <a href = "{{url('/category/'.$banner->link)}}" class="btn btn-default get">Get it Now</a>
                   </div>
+                </div>
                   <div class = "col-sm-6">
                     <img src = "{{asset('images/frontend_images/banners/'.$banner->image)}}">
                   </div>

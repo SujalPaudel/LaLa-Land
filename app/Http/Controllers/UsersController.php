@@ -50,7 +50,18 @@ class UsersController extends Controller
       }
     }
                   
-
+    public function checkCurrentSearch(Request $request){
+        $query = $request->all();
+        $data = DB::table('products')->where('product_name', 'LIKE', '%'.$query.'%')->get();
+        
+        $output = '<ul style = "display:block;position:relative;">';
+        foreach ($data as $row) {
+          $output .= '<li><a href = "#">'.$row->product_name.'</a></li>';
+        }
+        $output .= '</ul>';
+        echo $output;
+    
+    }
 
     public function checkCurrentPassword(Request $request){
       $data = $request->all();

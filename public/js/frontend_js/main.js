@@ -175,6 +175,25 @@ $().ready(function(){
 		})
 	});
 
+	// check the available products from the database
+
+	$("#search_box").keyup(function(){
+		var current_search= $(this).val();
+
+		if(current_search != ''){
+			var _token = $('input[name = "_token"]').val();
+			$.ajax({
+
+			type: 'post',
+			url: 'ramlal',
+			data: {current_search:current_search, _token:_token},
+			success:function(resp){
+				$("#search-results").fadeIn();
+				$("#search-results").html(resp);
+			},			
+		});
+	}
+	});	
 
 	$("#loginForm").validate({
 		rules:{

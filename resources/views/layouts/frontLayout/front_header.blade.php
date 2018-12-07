@@ -193,12 +193,11 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
             </div>
 
             <div class="mainmenu">
-              <ul class="nav navbar-nav collapse navbar-collapse" style="position: relative;">
+              <ul class="nav navbar-nav collapse navbar-collapse">
                 @foreach($categories as $cat)
                   @if($cat->status == '1')
                     <li><a href="{{url('/category/'.$cat->url)}}"`>{{$cat->name}}
                       <i class="fa fa-angle-down"></i></a>
-                        
                           <ul role="menu" class="sub-menu {{$cat->name}}">
                             <!-- <div id = "{{$cat->name}}"></div> -->
                             @foreach($cat->subcategories as $subc)
@@ -221,36 +220,16 @@ $categories= Category::with('subcategories')->where(['parent_id'=>0])->get();
 
           </div>
           <div class="col-sm-3">
-            <form action = "{{url('search')}}" method="post">{{ csrf_field() }}
               <div class="search_box pull-right">
-                <input type="text" placeholder="Search" name = "search_box" id = "search_box" autocomplete="off" />
-
-
-              <script src="/js/frontend_js/jquery.js"></script>
-              <script>
-
-           
-                $(document).ready(function(){
-                    $("#search_box").keyup(function(){
-                      var search_item = $(this).val();  // this selects the current html element $(selector).action()
-                      if(search_item != ''){
-                        var _token = $('input[name="_token"]').val();
-                        $.ajax({
-                          url: "{{route('autocomplete.fetch')}}",  // call this function
-                          method: "POST",   // the method of sending data is POST
-                          data: {search_item: search_item, _token: _token},   // data you are tryin to send
-                          success: function(data){  // what if we recieve all the data we want from the server execute this cmd
-                            $("#search_box").fadeIn();  // for the fadeIn effect
-                            $("#search_box").html(data);  // for the data
-                          }
-                        })
-                      }
-                    });
-                  });
-                  
-                </script>
+                <input type="text" placeholder="Search" name = "search_box" id = "search_box" autocomplete = "off" />         
               </div>
-            </form>
+
+              <div id = "search-results">
+
+              </div>
+              {{ csrf_field() }}
+
+         
           </div>
         </div>
       </div>
